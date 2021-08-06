@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/ID_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/ID_textView"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <TextView
+        android:id="@+id/AppName_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="앱 이름"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="292dp" />
+
+    <TextView
+        android:id="@+id/ID_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID :"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="369dp" />
+
+    <Button
+        android:id="@+id/Login_button"
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="36dp"
+        android:text="LOGIN"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="350dp" />
+
+    <CheckBox
+        android:id="@+id/autoLogin_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="자동 로그인"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="462dp" />
+
+    <TextView
+        android:id="@+id/signUp_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="274dp"
+        tools:layout_editor_absoluteY="462dp" />
+
+    <TextView
+        android:id="@+id/finding_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID/PW 찾기"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="482dp" />
+
+    <TextView
+        android:id="@+id/PW_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PW :"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="421dp" />
+
+    <EditText
+        android:id="@+id/PW_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/PW_textView"
+        app:layout_constraintTop_toBottomOf="@+id/ID_editText" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AppName_textView" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/AppName_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/ID_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="385dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
