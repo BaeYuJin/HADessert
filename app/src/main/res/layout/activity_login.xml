@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/AppName_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="앱 이름"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/ID_editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/PW_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="4dp"
+        android:text="PW"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/PW_editText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/PW_editText" />
+
+    <EditText
+        android:id="@+id/PW_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/Login_button"
+        app:layout_constraintTop_toBottomOf="@+id/ID_editText" />
+
+    <Button
+        android:id="@+id/Login_button"
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#F1EEE5"
+        android:text="LOGIN"
+        android:textColor="#a0a9ec"
+        android:textSize="8sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.561" />
+
+    <CheckBox
+        android:id="@+id/autoLogin_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
+        android:text="자동 로그인"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/PW_editText"
+        app:layout_constraintTop_toBottomOf="@+id/PW_editText" />
+
+    <TextView
+        android:id="@+id/signUp_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="회원가입"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/PW_editText"
+        app:layout_constraintTop_toBottomOf="@+id/PW_editText" />
+
+    <TextView
+        android:id="@+id/finding_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="ID/PW 찾기"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/signUp_textView"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_textView" />
+
+    <TextView
+        android:id="@+id/ID_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="4dp"
+        android:text="ID"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/ID_editText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ID_editText" />
+
+    <EditText
+        android:id="@+id/ID_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/Login_button"
+        app:layout_constraintTop_toTopOf="@+id/Login_button" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/AppName_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/appIcon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
