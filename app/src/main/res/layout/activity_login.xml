@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background"
+    android:textAlignment="textStart"
     tools:context=".MainActivity">
 
     <ImageView
@@ -54,6 +55,7 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/logIn_button"
         app:layout_constraintTop_toTopOf="@+id/logIn_button" />
@@ -79,6 +81,7 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/logIn_button"
         app:layout_constraintStart_toEndOf="@+id/pw_textView"
         app:layout_constraintTop_toBottomOf="@+id/id_editText" />
