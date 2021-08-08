@@ -109,9 +109,9 @@
         android:layout_marginStart="8dp"
         android:text="중복확인"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName3"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintBottom_toBottomOf="@+id/id"
+        app:layout_constraintStart_toEndOf="@+id/id"
+        app:layout_constraintTop_toTopOf="@+id/id" />
 
     <Button
         android:id="@+id/emailcheckbtn"
@@ -119,12 +119,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="중복확인"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintBottom_toBottomOf="@+id/email"
+        app:layout_constraintStart_toEndOf="@+id/email"
+        app:layout_constraintTop_toTopOf="@+id/email" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -136,7 +136,7 @@
         app:layout_constraintTop_toTopOf="@+id/nametext" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toTopOf="@+id/idtext" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -158,7 +158,7 @@
         app:layout_constraintTop_toTopOf="@+id/pwtext" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -170,7 +170,7 @@
         app:layout_constraintTop_toTopOf="@+id/emailtext" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/pwcheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -181,7 +181,7 @@
         app:layout_constraintTop_toTopOf="@+id/pwchecktext" />
 
     <EditText
-        android:id="@+id/editTextDate2"
+        android:id="@+id/birth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -201,13 +201,13 @@
         app:layout_constraintTop_toTopOf="@+id/sextext">
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/male_rbt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="남성" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/female_rbt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="여성" />
@@ -220,8 +220,8 @@
         android:layout_marginTop="8dp"
         android:text="* 사용 가능한 아이디입니다."
         android:textColor="#4CAF50"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintStart_toStartOf="@+id/id"
+        app:layout_constraintTop_toBottomOf="@+id/id" />
 
     <TextView
         android:id="@+id/textView14"
@@ -230,8 +230,8 @@
         android:layout_marginTop="8dp"
         android:text="* 비밀번호가 일치하지 않습니다."
         android:textColor="#F44336"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintStart_toStartOf="@+id/pwcheck"
+        app:layout_constraintTop_toBottomOf="@+id/pwcheck" />
 
     <TextView
         android:id="@+id/textView15"
@@ -240,7 +240,7 @@
         android:layout_marginTop="8dp"
         android:text="* 이미 가입된 이메일입니다."
         android:textColor="#F44336"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
