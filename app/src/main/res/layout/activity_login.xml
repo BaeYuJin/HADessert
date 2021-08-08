@@ -8,18 +8,18 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/appIcon"
+        android:id="@+id/appIcon_imageView"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/AppName_textView"
+        app:layout_constraintBottom_toTopOf="@+id/appName_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/appIcon" />
+        app:srcCompat="@drawable/appicon" />
 
     <TextView
-        android:id="@+id/AppName_textView"
+        android:id="@+id/appName_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -27,12 +27,12 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ID_editText"
+        app:layout_constraintBottom_toTopOf="@+id/id_editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/ID_textView"
+        android:id="@+id/id_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
@@ -40,14 +40,14 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ID_editText"
-        app:layout_constraintEnd_toStartOf="@+id/ID_editText"
+        app:layout_constraintBottom_toBottomOf="@+id/id_editText"
+        app:layout_constraintEnd_toStartOf="@+id/id_editText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ID_editText" />
+        app:layout_constraintTop_toTopOf="@+id/id_editText" />
 
     <EditText
-        android:id="@+id/ID_editText"
+        android:id="@+id/id_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -56,11 +56,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/Login_button"
-        app:layout_constraintTop_toTopOf="@+id/Login_button" />
+        app:layout_constraintEnd_toStartOf="@+id/logIn_button"
+        app:layout_constraintTop_toTopOf="@+id/logIn_button" />
 
     <TextView
-        android:id="@+id/PW_textView"
+        android:id="@+id/pw_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -68,26 +68,26 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/PW_editText"
+        app:layout_constraintBottom_toBottomOf="@+id/pw_editText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/PW_editText" />
+        app:layout_constraintTop_toTopOf="@+id/pw_editText" />
 
     <EditText
-        android:id="@+id/PW_editText"
+        android:id="@+id/pw_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toStartOf="@+id/Login_button"
-        app:layout_constraintStart_toEndOf="@+id/PW_textView"
-        app:layout_constraintTop_toBottomOf="@+id/ID_editText" />
+        app:layout_constraintEnd_toStartOf="@+id/logIn_button"
+        app:layout_constraintStart_toEndOf="@+id/pw_textView"
+        app:layout_constraintTop_toBottomOf="@+id/id_editText" />
 
     <Button
-        android:id="@+id/Login_button"
+        android:id="@+id/logIn_button"
         android:layout_width="60dp"
-        android:layout_height="72dp"
+        android:layout_height="68dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#F1EEE5"
         android:text="@string/login"
@@ -106,10 +106,11 @@
         android:layout_marginTop="4dp"
         android:text="@string/autoLogin"
         android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/PW_editText"
-        app:layout_constraintTop_toBottomOf="@+id/PW_editText" />
+        app:layout_constraintStart_toStartOf="@+id/pw_editText"
+        app:layout_constraintTop_toBottomOf="@+id/pw_editText" />
 
     <TextView
         android:id="@+id/signUp_textView"
@@ -120,8 +121,8 @@
         android:textColor="#FFFFFF"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/PW_editText"
-        app:layout_constraintTop_toBottomOf="@+id/PW_editText" />
+        app:layout_constraintEnd_toEndOf="@+id/pw_editText"
+        app:layout_constraintTop_toBottomOf="@+id/pw_editText" />
 
     <TextView
         android:id="@+id/finding_textView"
