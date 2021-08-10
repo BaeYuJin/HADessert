@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
         android:text="이름 :"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.124"
@@ -48,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="아이디 :"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/nametext"
         app:layout_constraintTop_toBottomOf="@+id/nametext" />
@@ -58,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="비밀번호 :"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/idtext"
         app:layout_constraintTop_toBottomOf="@+id/idtext" />
@@ -68,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="재입력 :"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/pwtext"
         app:layout_constraintTop_toBottomOf="@+id/pwtext" />
@@ -78,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="이메일 :"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/pwchecktext"
         app:layout_constraintTop_toBottomOf="@+id/pwchecktext" />
@@ -88,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="생년월일 :"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/emailtext"
         app:layout_constraintTop_toBottomOf="@+id/emailtext" />
@@ -98,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="성별 :"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/birthtext"
         app:layout_constraintTop_toBottomOf="@+id/birthtext" />
@@ -192,6 +199,7 @@
         app:layout_constraintTop_toTopOf="@+id/birthtext" />
 
     <RadioGroup
+        android:id="@+id/radiogroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -204,13 +212,15 @@
             android:id="@+id/male_rbt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="남성" />
+            android:text="남성"
+            android:textColor="#000000" />
 
         <RadioButton
             android:id="@+id/female_rbt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="여성" />
+            android:text="여성"
+            android:textColor="#000000" />
     </RadioGroup>
 
     <TextView
@@ -242,5 +252,15 @@
         android:textColor="#F44336"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <Button
+        android:id="@+id/pwbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="일치확인"
+        app:layout_constraintBottom_toBottomOf="@+id/pwcheck"
+        app:layout_constraintStart_toEndOf="@+id/pwcheck"
+        app:layout_constraintTop_toTopOf="@+id/pwcheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
