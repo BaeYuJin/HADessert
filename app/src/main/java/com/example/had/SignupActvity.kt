@@ -48,7 +48,7 @@ class SignupActvity : AppCompatActivity() {
                 R.id.female_rbt -> sex = "여성"
             }
 
-            //Log.d("Name : ", name.toString())
+            Log.d("Name : ", name.toString())
             Log.d("sex : ", sex)
 
             startActivity(Intent(this, LoginActivity::class.java))
