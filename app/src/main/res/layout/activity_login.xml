@@ -111,31 +111,42 @@
         android:textColorLink="#FFFFFF"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/pw_editText"
-        app:layout_constraintTop_toBottomOf="@+id/pw_editText" />
+        app:layout_constraintStart_toStartOf="@+id/saveID_checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/saveID_checkBox" />
 
-    <TextView
-        android:id="@+id/signUp_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+    <Button
+        android:id="@+id/signUp_button"
+        android:layout_width="45dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="6dp"
+        android:background="#00FF0000"
         android:text="@string/signUp"
-        android:textColor="#FFFFFF"
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/pw_editText"
         app:layout_constraintTop_toBottomOf="@+id/pw_editText" />
 
-    <TextView
-        android:id="@+id/finding_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/finding_button"
+        android:layout_width="56dp"
+        android:layout_height="15dp"
         android:layout_marginTop="4dp"
+        android:background="#00FF0000"
         android:text="@string/finding"
-        android:textColor="#FFFFFF"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/signUp_textView"
-        app:layout_constraintTop_toBottomOf="@+id/signUp_textView" />
+        app:layout_constraintEnd_toEndOf="@+id/signUp_button"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_button" />
+
+    <CheckBox
+        android:id="@+id/saveID_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
+        android:text="ID 저장"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/pw_editText"
+        app:layout_constraintTop_toBottomOf="@+id/pw_editText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

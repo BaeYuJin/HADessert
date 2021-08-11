@@ -4,9 +4,9 @@
     <string name="password">PW</string>
     <string name="login">LOGIN</string>
     <string name="autoLogin">자동 로그인</string>
-    <string name="signUp">회원가입</string>
-    <string name="finding">ID/PW 찾기</string>
     <string name="id">ID</string>
     <string name="splash_appName">Sweet Spot</string>
     <string name="location">현재 위치</string>
+    <string name="signUp">회원가입</string>
+    <string name="finding">ID/PW 찾기</string>
 </resources>

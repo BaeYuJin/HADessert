@@ -11,6 +11,8 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".MainActivity"/>
         <activity android:name=".LoginActivity"/>
+        <activity android:name=".SignupActvity"/>
+        <activity android:name=".IDnPwFindingActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
