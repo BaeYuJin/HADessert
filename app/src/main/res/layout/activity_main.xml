@@ -66,12 +66,15 @@
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
+                android:layout_centerHorizontal="false"
+
+                android:closeIcon="@android:drawable/presence_offline"
                 android:iconifiedByDefault="false"
                 android:padding="5dp"
-                android:queryHint="요즘 가장 인기있는 디저트는?"
-                android:background="@drawable/searchview_layout"
+                android:textColorHint="#111111"
+                app:queryHint="요즘 가장 인기있는 디저트는?"
                 tools:layout_editor_absoluteX="16dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
