@@ -8,5 +8,4 @@
     <string name="splash_appName">Sweet Spot</string>
     <string name="location">현재 위치</string>
     <string name="signUp">회원가입</string>
-    <string name="finding">ID/PW 찾기</string>
 </resources>
