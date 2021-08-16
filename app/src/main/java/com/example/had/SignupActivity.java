@@ -63,7 +63,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //가입 정보 가져오기
+                //가입 정보 가져오기//
                 final String email = mEmailText.getText().toString().trim();
                 //final String uid = mIdText.getText().toString().trim();
                 String pwd = mPasswordText.getText().toString().trim();
