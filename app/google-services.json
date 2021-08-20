@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "535547540272",
+    "firebase_url": "https://hadessert-c6192-default-rtdb.firebaseio.com",
     "project_id": "hadessert-c6192",
     "storage_bucket": "hadessert-c6192.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "535547540272-is97no1t6aasaed2tep0gqrcv3k4mn1e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.had",
+            "certificate_hash": "2c8974ac5adc23b648f8205282e41d62699e8d60"
+          }
+        },
         {
           "client_id": "535547540272-a2ne9oei6aqv2puurd5evapjdorlki8h.apps.googleusercontent.com",
           "client_type": 3
