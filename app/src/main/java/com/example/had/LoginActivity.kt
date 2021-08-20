@@ -30,17 +30,16 @@ class LoginActivity : AppCompatActivity() {
             else {
                 if(binding.loginEmailEditText.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex()) && !TextUtils.isEmpty(binding.pwEditText.text)) {
                     startActivity(Intent(this, MainActivity::class.java))
-                    binding.loginEmailEditText.setBackgroundColor(R.drawable.white_edittext)
                 }
                 else {
-                    Toast.makeText(this, "이메일 형식으로 입력하세요.", Toast.LENGTH_SHORT).show()
-                    binding.loginEmailEditText.setBackgroundResource(R.drawable.red_edittext)
-                }
-                if (TextUtils.isEmpty(binding.loginEmailEditText.text)) {
-                    Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
-                }
-                else if(TextUtils.isEmpty(binding.pwEditText.text)) {
-                    Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+                    if (TextUtils.isEmpty(binding.loginEmailEditText.text)) {
+                        Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
+                    }
+                    else if (TextUtils.isEmpty(binding.pwEditText.text)) {
+                        Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                        Toast.makeText(this, "이메일 형식으로 입력하세요.", Toast.LENGTH_SHORT).show()
                 }
             }
         }
