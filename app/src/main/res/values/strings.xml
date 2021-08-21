@@ -8,7 +8,8 @@
     <string name="splash_appName">Sweet Spot</string>
     <string name="location">현재 위치</string>
     <string name="signUp">회원가입</string>
-    <string name="findingGuide">회원님의 소중한 개인정보 보호를 위하여 본인확인이 필요합니다.
-        원하시는 본인확인 방법을 선택해주세요.
-    </string>
+    <string name="findingGuide">회원님의 소중한 개인정보 보호를 위하여 본인확인이 필요합니다.</string>
+    <string name="phoneGuide">"공인된 인증기관을 통해 \n 휴대폰 인증을 \n 받을 수 있습니다."</string>
+    <string name="findingGuide2">" ·   이메일/비밀번호 관리의 책임은 본인에게 있습니다. \n ·   타인에게 알려줄 경우 불이익을 당할 수 있으므로 관리에 주의하여 주십시오. \n ·   이메일/비밀번호 관리 소홀로 인한 피해는 본 어플에서 책임지지 않습니다.</string>
+    <string name="changingGuide">" ·   연속적인 숫자나 생일, 전화번호 등 추측하기 쉬운 개인정보 및 아이디와 비슷한 전화번호 \n     사용을 피하시기 바랍니다. \n ·   비밀번호는 특수기호를 포함한 3가지(영어 대소문자, 숫자) 이상을 혼합하여 입력하세요."</string>
 </resources>
