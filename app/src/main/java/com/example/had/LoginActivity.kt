@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.findingButton.setOnClickListener {
-            startActivity(Intent(this, IDnPwFindingActivity::class.java))
+            startActivity(Intent(this, FindingIDnPWActivity::class.java))
         }
 
         binding.loginButton.setOnClickListener {
@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity() {
             }
             else {
                 if(binding.loginEmailEditText.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex()) && !TextUtils.isEmpty(binding.pwEditText.text)) {
-
                     auth.signInWithEmailAndPassword(binding.loginEmailEditText.text.toString().trim(), binding.pwEditText.text.toString().trim())
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
@@ -46,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
                                 Log.d(TAG, "signInWithEmail:success")
                                 val user = auth.currentUser
                                 startActivity(Intent(this, MainActivity::class.java))
-                                binding.loginEmailEditText.setBackgroundColor(R.drawable.white_edittext)
+                                //binding.loginEmailEditText.setBackgroundColor(R.drawable.white_edittext)
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -56,14 +55,16 @@ class LoginActivity : AppCompatActivity() {
                         }
                 }
                 else {
-                    Toast.makeText(this, "이메일 형식으로 입력하세요.", Toast.LENGTH_SHORT).show()
-                    binding.loginEmailEditText.setBackgroundResource(R.drawable.red_edittext)
-                }
-                if (TextUtils.isEmpty(binding.loginEmailEditText.text)) {
-                    Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
-                }
-                else if(TextUtils.isEmpty(binding.pwEditText.text)) {
-                    Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+                    if (TextUtils.isEmpty(binding.loginEmailEditText.text)) {
+                        Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
+                    }
+                    else if (TextUtils.isEmpty(binding.pwEditText.text)) {
+                        Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        Toast.makeText(this, "이메일 형식으로 입력하세요.", Toast.LENGTH_SHORT).show()
+                        //binding.loginEmailEditText.setBackgroundResource(R.drawable.red_edittext)
+                    }
                 }
             }
         }

@@ -40,7 +40,7 @@ public class SignupActivity extends AppCompatActivity {
 
         firebaseAuth =  FirebaseAuth.getInstance();
 
-        mIdText = findViewById(R.id.id);
+        //mIdText = findViewById(R.id.id);
         mEmailText = findViewById(R.id.email);
         mPasswordText = findViewById(R.id.pw);
         mPasswordcheckText = findViewById(R.id.pwcheck);

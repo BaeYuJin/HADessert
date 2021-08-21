@@ -20,7 +20,7 @@
         android:layout_width="372dp"
         android:layout_height="46dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/searchview_layout"
+        android:background="@drawable/layout1"
         android:backgroundTint="@color/purple_500"
         android:iconifiedByDefault="false"
         android:padding="5dp"
