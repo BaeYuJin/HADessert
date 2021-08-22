@@ -1,6 +1,8 @@
 package com.example.had
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -13,12 +15,14 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_splash)
 
         auth = Firebase.auth
+
         val user = auth.currentUser
         val handler = Handler()
-        if (user != null) {
+        if ((user != null ) && (PreferenceUtil.getAutoLogin(this) == "true")) {
             handler.postDelayed({
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

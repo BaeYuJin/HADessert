@@ -24,6 +24,11 @@ class LoginActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+        binding.saveIDCheckBox.isChecked = PreferenceUtil.getUserId(this) != ""
+
+        val s = PreferenceUtil.getUserId(this)
+        binding.loginEmailEditText.setText(s)
+
         binding.signUpButton.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
@@ -33,6 +38,17 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginButton.setOnClickListener {
+            if(binding.saveIDCheckBox.isChecked) {
+                PreferenceUtil.setUserId(this, binding.loginEmailEditText.text.toString().trim())
+            } else {
+                PreferenceUtil.setUserId(this, "")
+            }
+            if(binding.autoLoginCheckBox.isChecked){
+                PreferenceUtil.setAutoLogin(this, "true".toString())
+
+            } else {
+                PreferenceUtil.setAutoLogin(this, "false")
+            }
             if(TextUtils.isEmpty(binding.loginEmailEditText.text) && TextUtils.isEmpty(binding.pwEditText.text)) {
                 Toast.makeText(this, "이메일과 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
             }
