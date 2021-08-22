@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "signInWithEmail:failure", task.exception)
-                                Toast.makeText(baseContext, "없는 이메일이거나 잘못된 비밀번호입니다.",
+                                Toast.makeText(baseContext, "등록되지 않은 이메일이거나 잘못된 비밀번호입니다.",
                                     Toast.LENGTH_SHORT).show()
                             }
                         }
