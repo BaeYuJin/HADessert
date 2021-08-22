@@ -6,6 +6,8 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.had.databinding.ActivityFindingidpwBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class FindingIDnPWActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFindingidpwBinding
@@ -17,8 +19,16 @@ class FindingIDnPWActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.squareView.setOnClickListener {
-            if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex()))
-                startActivity(Intent(this, ChangingIDnPWActivity::class.java))
+            if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex())){
+                val emailAddress = binding.findingEditTextEmailAddress.text.toString().trim()
+                Firebase.auth.sendPasswordResetEmail(emailAddress)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(baseContext, "비밀번호 재설정 이메일을 보냈습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
             else {
                 if (TextUtils.isEmpty(binding.findingEditTextEmailAddress.text)) {
                     Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
@@ -28,8 +38,16 @@ class FindingIDnPWActivity : AppCompatActivity() {
             }
         }
         binding.phoneImageView.setOnClickListener {
-            if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex()))
-                startActivity(Intent(this, ChangingIDnPWActivity::class.java))
+            if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex())) {
+                val emailAddress = binding.findingEditTextEmailAddress.text.toString().trim()
+                Firebase.auth.sendPasswordResetEmail(emailAddress)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(baseContext, "비밀번호 재설정 이메일을 보냈습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
             else {
                 if (TextUtils.isEmpty(binding.findingEditTextEmailAddress.text)) {
                     Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
@@ -40,8 +58,16 @@ class FindingIDnPWActivity : AppCompatActivity() {
 
         }
         binding.phoneTitleTextView.setOnClickListener {
-            if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex()))
-                startActivity(Intent(this, ChangingIDnPWActivity::class.java))
+            if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex())) {
+                val emailAddress = binding.findingEditTextEmailAddress.text.toString().trim()
+                Firebase.auth.sendPasswordResetEmail(emailAddress)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(baseContext, "비밀번호 재설정 이메일을 보냈습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
             else {
                 if (TextUtils.isEmpty(binding.findingEditTextEmailAddress.text)) {
                     Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
@@ -51,8 +77,16 @@ class FindingIDnPWActivity : AppCompatActivity() {
             }
         }
         binding.phoneGuideTextView.setOnClickListener {
-            if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex()))
-                startActivity(Intent(this, ChangingIDnPWActivity::class.java))
+            if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex())){
+                val emailAddress = binding.findingEditTextEmailAddress.text.toString().trim()
+                Firebase.auth.sendPasswordResetEmail(emailAddress)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(baseContext, "비밀번호 재설정 이메일을 보냈습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
             else {
                 if (TextUtils.isEmpty(binding.findingEditTextEmailAddress.text)) {
                     Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
