@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/bar" />
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/main_searchView"
         android:layout_width="372dp"
         android:layout_height="46dp"
         android:layout_centerHorizontal="true"

@@ -27,16 +27,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         /*
-        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                //searchMovie(query!!)
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })*/
+        binding.searchView.setOnCloseListener {
+            startActivity(Intent(this, 최근검색어&인기검색어 액티비티::class.java))
+        }*/
 
     }
 }
