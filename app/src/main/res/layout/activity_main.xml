@@ -73,7 +73,7 @@
                 android:iconifiedByDefault="false"
                 android:padding="5dp"
                 android:queryHint="요즘 가장 인기있는 디저트는?"
-                android:textColorHint="#111111"
+                android:textColorHint="#000000"
                 tools:layout_editor_absoluteX="16dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
