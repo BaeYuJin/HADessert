@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_ivory">
+    android:background="@color/background_ivory"
+    android:theme="@style/SearchViewStyle">
 
     <ImageView
         android:id="@+id/imageView7"
@@ -22,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/layout1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/background_ivory"
         android:iconifiedByDefault="false"
         android:padding="5dp"
         android:queryHint="요즘 가장 인기있는 디저트는?"
