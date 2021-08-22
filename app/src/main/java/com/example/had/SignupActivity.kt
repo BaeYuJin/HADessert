@@ -18,13 +18,13 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //setContentView(R.layout.activity_signup)
         val binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Initialize Firebase Auth
         auth = Firebase.auth
+        val database = Firebase.database
+        val reference = database.getReference("Users")
 
         binding.pwbtn.setOnClickListener {
             if (binding.pw.text.toString() != binding.pwcheck.text.toString()) {
@@ -73,8 +73,6 @@ class SignupActivity : AppCompatActivity() {
                     hashMap.put("birth", birth)
                     hashMap.put("sex", sex)
 
-                    val database = Firebase.database
-                    val reference = database.getReference("Users")
                     reference.child(uid).setValue(hashMap)
 
                     Toast.makeText(baseContext, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
@@ -85,7 +83,7 @@ class SignupActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "회원가입에 실패하셨습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "이미 등록된 이메일입니다.", Toast.LENGTH_SHORT).show()
                 }
             }
         }
