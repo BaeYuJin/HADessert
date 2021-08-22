@@ -33,13 +33,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/introDesserts_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="16dp"
+        android:theme="@style/ToolbarTheme"
         android:background="#00FF0000"
         app:contentInsetStart="0dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/introDessertBar_imageView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,15 +49,22 @@
             android:paddingEnd="16dp">
 
             <SearchView
-                android:id="@+id/searchView"
+                android:id="@+id/main_searchView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="false"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/layout5"
                 android:closeIcon="@android:drawable/presence_offline"
                 android:iconifiedByDefault="false"
                 android:padding="5dp"
                 android:queryHint="궁금한 디저트를 검색해보세요!"
-                tools:layout_editor_absoluteX="16dp"/>
+                android:searchIcon="@android:drawable/ic_search_category_default"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
