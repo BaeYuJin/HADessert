@@ -27,6 +27,7 @@
         android:text="비밀번호 변경"
         android:textColor="@color/background_purple"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
