@@ -7,7 +7,7 @@
     android:background="@color/background_ivory">
 
     <ImageView
-        android:id="@+id/mainTop_imageView"
+        android:id="@+id/imageView"
         android:layout_width="414dp"
         android:layout_height="92dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,11 +16,12 @@
         app:srcCompat="@drawable/bar" />
 
     <TextView
-        android:id="@+id/mainTop_textView"
+        android:id="@+id/main_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="240dp"
+        android:fontFamily="@font/im_hyemin_bold"
         android:text="@string/location"
         android:textColor="@color/background_ivory"
         android:textSize="36sp"
@@ -41,8 +42,40 @@
         android:maxHeight="50dp"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mainTop_textView"
-        app:layout_constraintTop_toTopOf="@+id/mainTop_textView"
+        app:layout_constraintStart_toEndOf="@+id/main_textView"
+        app:layout_constraintTop_toTopOf="@+id/main_textView"
         app:srcCompat="@drawable/profile" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="16dp"
+        android:background="#00FF0000"
+        android:theme="@style/ToolbarTheme"
+        app:contentInsetStart="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="false"
+
+                android:closeIcon="@android:drawable/presence_offline"
+                android:iconifiedByDefault="false"
+                android:padding="5dp"
+                android:queryHint="요즘 가장 인기있는 디저트는?"
+                android:textColorHint="#111111"
+                tools:layout_editor_absoluteX="16dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
