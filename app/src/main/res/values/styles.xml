@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColor">@color/background_purple</item>
+        <item name="android:editTextColor">@color/background_purple</item>
+        <item name="android:textColorHint">@color/background_purple</item>
+    </style>
+    <style name="ToolbarTheme">
+        <item name="android:textColorHint">@color/background_purple</item>
+        <itme name="android:font-family">@font/im_hyemin_regular/</itme>
+    </style>
+</resources>

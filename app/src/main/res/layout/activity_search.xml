@@ -21,7 +21,7 @@
         android:layout_height="46dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/layout1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/background_ivory"
         android:iconifiedByDefault="false"
         android:padding="5dp"
         android:queryHint="요즘 가장 인기있는 디저트는?"
