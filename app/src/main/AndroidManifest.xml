@@ -17,7 +17,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".FindingIDnPWActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".ChangingIDnPWActivity" />
+        <activity android:name=".IntroDessertActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
