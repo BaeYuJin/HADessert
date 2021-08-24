@@ -4,20 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_ivory"
+    android:background="@color/background_purple"
     tools:context=".ProfileActivity">
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="420dp"
-        android:layout_height="117dp"
-        android:layout_marginTop="150dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginTop="-60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.445"
         app:srcCompat="@drawable/bar_upside" />
 
     <LinearLayout
@@ -33,42 +31,62 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/likedStore"
             android:layout_width="match_parent"
-            android:layout_height="38dp"
+            android:layout_height="50dp"
             android:fontFamily="@font/im_hyemin_regular"
-            android:text="찜한 가게"
+            android:text="내가 찜한 가게"
             android:textAlignment="gravity"
             android:textColor="@color/background_ivory"
             android:textSize="24sp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/appSetting"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/im_hyemin_regular"
+            android:text="설정"
+            android:textAlignment="gravity"
+            android:textColor="@color/background_ivory"
+            android:textSize="24sp" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/appInfo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/im_hyemin_regular"
+            android:text="앱 정보"
+            android:textAlignment="gravity"
+            android:textColor="@color/background_ivory"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/im_hyemin_bold"
+            android:text="로그아웃"
+            android:textAlignment="gravity"
+            android:textColor="#EC6D61"
+            android:textSize="24sp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/im_hyemin_bold"
         android:text="사용자 이름"
         android:textColor="@color/darkgray"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/profileImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/changeProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -78,5 +96,15 @@
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/userName"
         app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
