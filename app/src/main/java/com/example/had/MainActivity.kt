@@ -10,6 +10,7 @@ import android.graphics.Typeface
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import com.example.test.NaverSearchPlace
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         binding.introDessertView.setOnClickListener {
             startActivity(Intent(this, IntroDessertActivity::class.java))
         }
+
+        /*val thread = Thread {
+                var apiExamSearchBlog = NaverSearchPlace()
+                apiExamSearchBlog.main()
+            }.start()*/
 
     }
     override fun onBackPressed() {
