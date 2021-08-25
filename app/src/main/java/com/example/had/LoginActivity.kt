@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
     private val TAG = "Register"
     private var emailPattern = "[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\\.[a-zA-Z]{2,3}"
     private lateinit var auth: FirebaseAuth
+    var mBackWait:Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,5 +87,12 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-
+    override fun onBackPressed() {
+        if(System.currentTimeMillis() - mBackWait >=2000 ) {
+            mBackWait = System.currentTimeMillis()
+            Toast.makeText(this,"뒤로가기 버튼을 한번 더 누르면 종료됩니다.",Toast.LENGTH_LONG).show()
+        } else {
+            finishAffinity() //액티비티 종료
+        }
+    }
 }
