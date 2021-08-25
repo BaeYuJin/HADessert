@@ -18,6 +18,7 @@ class SearchActivity : AppCompatActivity() {
         val list = ArrayList<DataDessert>()
         list.add(DataDessert(null,"몽실", "3.7km", "4.9", null, "999+"))
         //list.add(DataDessert(getDrawable((R.drawable.~~)!!)""))
+        list.add(DataDessert(null,"몽실", "3.7km", "4.9", null, "999+"))
 
         val adapter = RecyclerAdapterDessert(list)
         binding.dessertRv.adapter = adapter

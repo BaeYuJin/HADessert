@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.had.databinding.ActivitySignupBinding
@@ -20,6 +21,9 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val sAdapter = ArrayAdapter.createFromResource(this, R.array.catrgories, android.R.layout.simple_spinner_dropdown_item)
+        binding.categoryComboBox.setAdapter(sAdapter);
 
         // Initialize Firebase Auth
         auth = Firebase.auth
@@ -49,6 +53,7 @@ class SignupActivity : AppCompatActivity() {
             var name = binding.name.text.toString().trim()
             var pw = binding.pw.text.toString().trim()
             var email = binding.email.text.toString().trim()
+            var emailad = binding.categoryComboBox.toString().trim() //db 추가해주세요
             var birth = binding.birth.text.toString().trim()
             var sex : String = ""
             var uid : String = ""

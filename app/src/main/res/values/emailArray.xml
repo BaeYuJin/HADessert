@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="catrgories">
+        <item>naver.com</item>
+        <item>daum.net</item>
+        <item>nate.com</item>
+        <item>hansung.ac.kr</item>
+        <item>gmail.com</item>
+    </string-array>
+</resources>

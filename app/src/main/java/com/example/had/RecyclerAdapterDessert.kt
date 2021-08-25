@@ -1,8 +1,10 @@
 package com.example.had
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.had.databinding.DessertListBinding
 
@@ -18,6 +20,7 @@ class RecyclerAdapterDessert(private val items:ArrayList<DataDessert>) : Recycle
     override fun onBindViewHolder(holder: RecyclerAdapterDessert.ViewHolder, position: Int) {
         val item = items[position]
         val listener = View.OnClickListener {
+            Log.d("ON CLICK", item.toString())
         }
         holder.apply {
             bind(listener, item)
@@ -33,7 +36,18 @@ class RecyclerAdapterDessert(private val items:ArrayList<DataDessert>) : Recycle
             binding.shopname.text = item.name
             binding.distance.text = item.distance
             binding.starscore.text = item.star
+            //binding.heart.setImageDrawable(item.heart)
             binding.heartcnt.text = item.heartcnt
+
+            binding.blankheart.setOnClickListener {
+                binding.heart.setVisibility(View.VISIBLE)
+                binding.blankheart.setVisibility(View.INVISIBLE)
+            }
+            binding.heart.setOnClickListener {
+                binding.blankheart.setVisibility(View.VISIBLE)
+                binding.heart.setVisibility(View.INVISIBLE)
+            }
+
         }
     }
 }
