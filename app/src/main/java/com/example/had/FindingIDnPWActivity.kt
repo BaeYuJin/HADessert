@@ -37,7 +37,7 @@ class FindingIDnPWActivity : AppCompatActivity() {
                     Toast.makeText(this, "이메일 형식으로 입력하세요.", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.phoneImageView.setOnClickListener {
+        binding.emailImageView.setOnClickListener {
             if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex())) {
                 val emailAddress = binding.findingEditTextEmailAddress.text.toString().trim()
                 Firebase.auth.sendPasswordResetEmail(emailAddress)
@@ -57,7 +57,7 @@ class FindingIDnPWActivity : AppCompatActivity() {
             }
 
         }
-        binding.phoneTitleTextView.setOnClickListener {
+        binding.emailTitleTextView.setOnClickListener {
             if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex())) {
                 val emailAddress = binding.findingEditTextEmailAddress.text.toString().trim()
                 Firebase.auth.sendPasswordResetEmail(emailAddress)
@@ -76,7 +76,7 @@ class FindingIDnPWActivity : AppCompatActivity() {
                     Toast.makeText(this, "이메일 형식으로 입력하세요.", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.phoneGuideTextView.setOnClickListener {
+        binding.emailGuideTextView.setOnClickListener {
             if(binding.findingEditTextEmailAddress.text.toString().trim { it <= ' ' }.matches(emailPattern.toRegex())){
                 val emailAddress = binding.findingEditTextEmailAddress.text.toString().trim()
                 Firebase.auth.sendPasswordResetEmail(emailAddress)

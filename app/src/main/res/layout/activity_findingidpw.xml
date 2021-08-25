@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="230dp"
-        android:text="비밀번호 찾기"
+        android:layout_marginEnd="220dp"
+        android:text="비밀번호 재설정"
         android:textColor="@color/background_purple"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -73,54 +73,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/findingGuide_textView" />
 
-    <View
-        android:id="@+id/square_view"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/layout2"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/finding_editTextEmailAddress"/>
-
     <ImageView
-        android:id="@+id/phone_imageView"
+        android:id="@+id/email_imageView"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginTop="24dp"
-        android:clickable="true"
         app:layout_constraintEnd_toEndOf="@+id/square_view"
         app:layout_constraintStart_toStartOf="@+id/square_view"
         app:layout_constraintTop_toTopOf="@+id/square_view"
-        app:srcCompat="@drawable/phone" />
+        app:srcCompat="@drawable/email" />
 
     <TextView
-        android:id="@+id/phoneTitle_textView"
+        android:id="@+id/emailTitle_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:clickable="true"
-        android:text="휴대폰 인증"
+        android:text="비밀번호 재설정"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/phone_imageView"
-        app:layout_constraintStart_toStartOf="@+id/phone_imageView"
-        app:layout_constraintTop_toBottomOf="@+id/phone_imageView" />
+        app:layout_constraintEnd_toEndOf="@+id/email_imageView"
+        app:layout_constraintStart_toStartOf="@+id/email_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/email_imageView" />
+
+    <View
+        android:id="@+id/square_view"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/layout2"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finding_editTextEmailAddress" />
 
     <TextView
-        android:id="@+id/phoneGuide_textView"
-        android:layout_width="100dp"
+        android:id="@+id/emailGuide_textView"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
-        android:text="@string/phoneGuide"
+        android:text="@string/emailGuide"
         android:textAlignment="center"
         android:textColor="@color/darkgray"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/phoneTitle_textView"
-        app:layout_constraintStart_toStartOf="@+id/phoneTitle_textView"
-        app:layout_constraintTop_toBottomOf="@+id/phoneTitle_textView" />
+        app:layout_constraintEnd_toEndOf="@+id/emailTitle_textView"
+        app:layout_constraintStart_toStartOf="@+id/emailTitle_textView"
+        app:layout_constraintTop_toBottomOf="@+id/emailTitle_textView" />
 
     <View
         android:id="@+id/filledSquare_view"
