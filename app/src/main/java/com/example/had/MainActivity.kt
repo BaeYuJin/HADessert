@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.mainSearchView.setOnClickListener {
+            val thread = Thread {
+                var apiExamSearchBlog = NaverSearchPlace()
+                apiExamSearchBlog.main()
+            }.start()
             startActivity(Intent(this, Search1Activity::class.java))
         }
 

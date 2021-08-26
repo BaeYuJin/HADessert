@@ -24,7 +24,6 @@ class SignupActivity : AppCompatActivity() {
 
         val sAdapter = ArrayAdapter.createFromResource(this, R.array.catrgories, android.R.layout.simple_spinner_dropdown_item)
         binding.categoryComboBox.setAdapter(sAdapter);
-
         // Initialize Firebase Auth
         auth = Firebase.auth
         val database = Firebase.database
@@ -54,6 +53,7 @@ class SignupActivity : AppCompatActivity() {
             var pw = binding.pw.text.toString().trim()
             var email = binding.email.text.toString().trim()
             var emailad = binding.categoryComboBox.toString().trim() //db 추가해주세요
+            email.plus(emailad)
             var birth = binding.birth.text.toString().trim()
             var sex : String = ""
             var uid : String = ""

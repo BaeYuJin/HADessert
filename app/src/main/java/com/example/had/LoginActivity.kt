@@ -61,7 +61,6 @@ class LoginActivity : AppCompatActivity() {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail:success")
                                 val user = auth.currentUser
-                                finish()
                                 startActivity(Intent(this, MainActivity::class.java))
                                 //binding.loginEmailEditText.setBackgroundColor(R.drawable.white_edittext)
                             } else {
