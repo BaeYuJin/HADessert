@@ -46,7 +46,6 @@ class FindingIDnPWActivity : AppCompatActivity() {
                 dialog.setPositiveButton("확인", dialog_listener)
                 dialog.setNegativeButton("취소", null)
                 dialog.show()
-                //startActivity(Intent(this, LoginActivity::class.java))
             }
             else {
                 if (TextUtils.isEmpty(binding.findingEditTextEmailAddress.text)) {
