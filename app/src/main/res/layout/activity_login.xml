@@ -132,13 +132,13 @@
         app:layout_constraintTop_toBottomOf="@+id/pw_editText" />
 
     <Button
-        android:id="@+id/finding_button"
-        android:layout_width="40dp"
+        android:id="@+id/changingPW_button"
+        android:layout_width="50dp"
         android:layout_height="15dp"
         android:layout_marginTop="4dp"
         android:background="#00FF0000"
         android:fontFamily="@font/im_hyemin_regular"
-        android:text="PW 찾기"
+        android:text="PW 재설정"
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/signUp_button"

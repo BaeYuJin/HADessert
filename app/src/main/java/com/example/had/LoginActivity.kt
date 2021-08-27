@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, SignupActivity::class.java))
         }
 
-        binding.findingButton.setOnClickListener {
+        binding.changingPWButton.setOnClickListener {
             startActivity(Intent(this, FindingIDnPWActivity::class.java))
         }
 
