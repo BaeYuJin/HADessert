@@ -7,12 +7,15 @@ import android.widget.Toast
 import com.example.had.databinding.ActivityProfileBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val storage = Firebase.storage
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
