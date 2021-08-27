@@ -22,19 +22,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.mainSearchView.setOnClickListener {
-            val thread = Thread {
-                var apiExamSearchBlog = NaverSearchPlace()
-                apiExamSearchBlog.main()
-            }.start()
             startActivity(Intent(this, Search1Activity::class.java))
         }
-
-        /*
-        binding.searchView.setOnCloseListener {
-         startActivity(Intent(this, 최근검색어&인기검색어 액티비티::class.java))
-        }*/
 
         binding.profileImageButton.setOnClickListener{
             startActivity(Intent(this, ProfileActivity::class.java))
