@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //setContentView(R.layout.activity_main)
+        val transcation = supportFragmentManager.beginTransaction()
 
         // 검색 창 클릭 시 액티비티 이동
         binding.mainSearchView.setOnClickListener {
@@ -42,8 +44,10 @@ class MainActivity : AppCompatActivity() {
         NaverMapSdk.getInstance(this).client =
                 NaverMapSdk.NaverCloudPlatformClient("enltqog9k1")
 
-
+        supportFragmentManager.beginTransaction().replace(R.id.hotPlaceFragment , HotPlaceFragment())
+        transcation.commit()
     }
+
     override fun onBackPressed() {
         if(System.currentTimeMillis() - mBackWait >=2000 ) {
             mBackWait = System.currentTimeMillis()
