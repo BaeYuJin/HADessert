@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 검색 창 클릭 시 액티비티 이동
         binding.mainSearchView.setOnClickListener {
             startActivity(Intent(this, Search1Activity::class.java))
         }
