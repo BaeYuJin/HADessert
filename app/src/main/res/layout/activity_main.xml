@@ -185,6 +185,12 @@
                     app:layout_constraintEnd_toEndOf="@+id/introDessert_view"
                     app:layout_constraintStart_toStartOf="@+id/introDessert_view"
                     app:layout_constraintTop_toTopOf="@+id/introDessert_view" />
+                
+                <!--<fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/map"
+                    android:name="com.naver.maps.map.MapFragment"/>-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

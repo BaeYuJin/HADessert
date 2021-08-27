@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.had.databinding.ActivitySignupBinding
@@ -22,8 +24,25 @@ class SignupActivity : AppCompatActivity() {
         val binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sAdapter = ArrayAdapter.createFromResource(this, R.array.catrgories, android.R.layout.simple_spinner_dropdown_item)
-        binding.categoryComboBox.setAdapter(sAdapter);
+        val array = resources.getStringArray(R.array.categories)
+
+        val sAdapter = ArrayAdapter.createFromResource(this, R.array.categories, android.R.layout.simple_spinner_dropdown_item)
+        binding.categoryComboBox.setAdapter(sAdapter)
+
+        var emailad =""
+
+        binding.categoryComboBox.onItemSelectedListener =  object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                emailad = "@${binding.categoryComboBox.getItemAtPosition(position)}"
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
+
         // Initialize Firebase Auth
         auth = Firebase.auth
         val database = Firebase.database
@@ -52,8 +71,8 @@ class SignupActivity : AppCompatActivity() {
             var name = binding.name.text.toString().trim()
             var pw = binding.pw.text.toString().trim()
             var email = binding.email.text.toString().trim()
-            var emailad = binding.categoryComboBox.toString().trim() //db 추가해주세요
-            email.plus(emailad)
+            //var emailad = binding.categoryComboBox.toString().trim() //db 추가해주세요
+            var mEmail = email.plus(emailad)
             var birth = binding.birth.text.toString().trim()
             var sex : String = ""
             var uid : String = ""
@@ -62,7 +81,7 @@ class SignupActivity : AppCompatActivity() {
                 R.id.female_rbt -> sex = "female".trim()
             }
 
-            auth.createUserWithEmailAndPassword(email, pw).addOnCompleteListener(this) { task ->
+            auth.createUserWithEmailAndPassword(mEmail, pw).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
@@ -73,7 +92,7 @@ class SignupActivity : AppCompatActivity() {
                         uid = user.uid
                     }
 
-                    hashMap.put("email", email)
+                    hashMap.put("email", mEmail)
                     hashMap.put("name", name)
                     hashMap.put("birth", birth)
                     hashMap.put("sex", sex)
@@ -88,7 +107,7 @@ class SignupActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "이미 등록된 이메일입니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "이메일 형식이 잘못되었거나 이미 등록된 이메일입니다.", Toast.LENGTH_SHORT).show()
                 }
             }
         }
