@@ -40,6 +40,22 @@ object PreferenceUtil {
         return prefs.getString("MY_LOGIN", "").toString()
     }
 
+    fun setRecentWords(context: Context, values: ArrayList<DataSearch>) {
+        val prefs = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        val set : Set<String> = HashSet()
+        set.plus(values)
+        editor.putStringSet("RE_WORD", set)
+        editor.apply()
+        editor.commit()
+    }
+
+    /*fun getRecentWords(context: Context): ArrayList<String> {
+        val prefs = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+        val set : Set<String> = prefs.getStringSet("RE_WORD", null)
+        return ArrayList(set)
+    }*/
+
     fun clearUser(context: Context) {
         val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = prefs.edit()
