@@ -16,21 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bar" />
 
-    <SearchView
-        android:id="@+id/main_searchView"
-        android:layout_width="372dp"
-        android:layout_height="46dp"
-        android:layout_centerHorizontal="true"
-        android:background="#000000"
-        android:backgroundTint="@color/purple_500"
-        android:iconifiedByDefault="false"
-        android:padding="5dp"
-        android:queryHint="요즘 가장 인기있는 디저트는?"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -42,6 +27,31 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <View
+        android:id="@+id/mainSearch_view2"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+        android:background="@drawable/layout5"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mainSearch_textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/im_hyemin_bold"
+        android:text="검색"
+        android:textColor="@color/background_purple"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/mainSearch_view2"
+        app:layout_constraintStart_toStartOf="@+id/mainSearch_view2"
+        app:layout_constraintTop_toTopOf="@+id/mainSearch_view2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dessert_rv"
