@@ -29,7 +29,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecentRv"
         android:layout_width="346dp"
-        android:layout_height="229dp"
+        android:layout_height="227dp"
         android:layout_marginTop="13dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -101,7 +101,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HotRv"
         android:layout_width="346dp"
-        android:layout_height="229dp"
+        android:layout_height="227dp"
         android:layout_marginTop="13dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="@+id/textView9"
