@@ -52,10 +52,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/layout5"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/white"
         android:iconifiedByDefault="false"
         android:padding="5dp"
         android:queryHint="요즘 가장 인기있는 디저트는?"
+        android:theme="@style/SearchViewStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -84,6 +85,20 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/mainSearch_textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/im_hyemin_bold"
+        android:text="검색"
+        android:textColor="@color/background_purple"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/main_searchView"
+        app:layout_constraintStart_toStartOf="@+id/main_searchView"
+        app:layout_constraintTop_toTopOf="@+id/main_searchView" />
 
     <TextView
         android:id="@+id/textView9"

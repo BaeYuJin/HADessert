@@ -1,5 +1,6 @@
 package com.example.had
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
@@ -15,9 +16,14 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.mainSearchView2.setOnClickListener {
+            startActivity(Intent(this, Search1Activity::class.java))
+        }
+
         val list = ArrayList<DataDessert>()
         list.add(DataDessert(null,"몽실", "3.7km", "4.9", null, "999+"))
         //list.add(DataDessert(getDrawable((R.drawable.~~)!!)""))
+        list.add(DataDessert(null,"몽실", "3.7km", "4.9", null, "999+"))
         list.add(DataDessert(null,"몽실", "3.7km", "4.9", null, "999+"))
 
         val adapter = RecyclerAdapterDessert(list)
