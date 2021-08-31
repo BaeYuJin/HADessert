@@ -3,11 +3,12 @@ package com.example.had
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.had.databinding.ActivityMainBinding
+import com.example.had.databinding.ActivitySearch1Binding
 import com.example.had.databinding.ActivitySearchBinding
 import com.example.had.databinding.DessertListBinding
-import com.example.test.NaverSearchPlace
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
@@ -17,14 +18,8 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        /*val thread = Thread {
-            var apiExamSearchBlog = NaverSearchPlace()
-            apiExamSearchBlog.main()
-        }.start()*/
-
         binding.mainSearchView2.setOnClickListener {
-            startActivity(Intent(this, Search1Activity::class.java))
+            finish()
         }
 
         val list = ArrayList<DataDessert>()
@@ -36,5 +31,6 @@ class SearchActivity : AppCompatActivity() {
         val adapter = RecyclerAdapterDessert(list)
         binding.dessertRv.adapter = adapter
 
+        binding.textView4.text = intent.getStringExtra("word")
     }
 }

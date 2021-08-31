@@ -63,4 +63,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:listitem="@layout/dessert_list" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/im_hyemin_bold"
+        android:text="검색"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/mainSearch_view2"
+        app:layout_constraintStart_toEndOf="@+id/mainSearch_textView2"
+        app:layout_constraintTop_toTopOf="@+id/mainSearch_view2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
