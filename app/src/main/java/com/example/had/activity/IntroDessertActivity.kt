@@ -1,10 +1,13 @@
-package com.example.had
+package com.example.had.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.had.R
+import com.example.had.adapter.IntroDessertAdapter
 import com.example.had.databinding.ActivityIntroDessertBinding
+import com.example.had.dataclass.IntroDessertData
 
 class IntroDessertActivity : AppCompatActivity() {
     private lateinit var binding : ActivityIntroDessertBinding

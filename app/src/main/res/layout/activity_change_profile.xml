@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_ivory"
-    tools:context=".ChangeProfileActivity">
+    tools:context=".activity.ChangeProfileActivity">
 
     <ImageView
         android:id="@+id/NewProfileImage"

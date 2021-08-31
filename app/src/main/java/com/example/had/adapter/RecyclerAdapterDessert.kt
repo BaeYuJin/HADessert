@@ -1,23 +1,23 @@
-package com.example.had
+package com.example.had.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.had.dataclass.DataDessert
 import com.example.had.databinding.DessertListBinding
 
 
 class RecyclerAdapterDessert(private val items:ArrayList<DataDessert>) : RecyclerView.Adapter<RecyclerAdapterDessert.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapterDessert.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val binding = DessertListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerAdapterDessert.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         val listener = View.OnClickListener {
             Log.d("ON CLICK", item.toString())

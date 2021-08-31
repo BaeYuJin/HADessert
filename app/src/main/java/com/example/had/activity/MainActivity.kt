@@ -1,16 +1,13 @@
-package com.example.had
+package com.example.had.activity
 
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.SearchView
 import com.example.had.databinding.ActivityMainBinding
-import android.graphics.Typeface
-import android.view.View
-import android.widget.TextView
 import android.widget.Toast
-import com.example.test.NaverSearchPlace
+import com.example.had.HotPlaceFragment
+import com.example.had.R
 import com.naver.maps.map.NaverMapSdk
 
 class MainActivity : AppCompatActivity() {
@@ -42,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 NaverMapSdk.NaverCloudPlatformClient("enltqog9k1")
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.hotPlaceMap_fragment , HotPlaceFragment())
+            .replace(R.id.hotPlaceMap_fragment, HotPlaceFragment())
             .commit()
     }
 
