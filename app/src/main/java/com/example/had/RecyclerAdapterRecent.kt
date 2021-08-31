@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.had.databinding.PopularListBinding
 import com.example.had.databinding.RecentListBinding
 
 
-class RecyclerAdapterRecent(private val items:ArrayList<DataSearch>) : RecyclerView.Adapter<RecyclerAdapterRecent.ViewHolder>() {
+class RecyclerAdapterRecent(private val items: ArrayList<DataSearch>) : RecyclerView.Adapter<RecyclerAdapterRecent.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapterRecent.ViewHolder {
 

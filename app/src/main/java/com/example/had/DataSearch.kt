@@ -1,4 +1,4 @@
 package com.example.had
 
-class DataSearch(val word:String) {
+class DataSearch(val word: String) {
 }
