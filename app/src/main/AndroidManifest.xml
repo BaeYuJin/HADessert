@@ -15,22 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".AppSettingActivity"
+            android:name=".activity.AppSettingActivity"
             android:exported="true" />
         <activity
-            android:name=".ChangeProfileActivity"
+            android:name=".activity.ChangeProfileActivity"
             android:exported="true" />
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".activity.SignupActivity" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activity.ProfileActivity"
             android:exported="true" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".FindingIDnPWActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".Search1Activity" />
-        <activity android:name=".IntroDessertActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.FindingIDnPWActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.Search1Activity" />
+        <activity android:name=".activity.IntroDessertActivity" />
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

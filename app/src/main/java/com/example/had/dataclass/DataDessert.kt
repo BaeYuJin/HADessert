@@ -1,4 +1,4 @@
-package com.example.had
+package com.example.had.dataclass
 import android.graphics.drawable.Drawable
 
 class DataDessert(val img:Drawable?, val name:String, val distance:String, val star:String, val heart:Drawable?, val heartcnt:String) {

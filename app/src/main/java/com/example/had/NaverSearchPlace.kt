@@ -1,5 +1,6 @@
 package com.example.test
 
+import com.example.had.dataclass.DataDessert
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.*
@@ -8,11 +9,12 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLEncoder
 
+
 class NaverSearchPlace {
     val clientId = "e7llm6I5HcgSi6AKsYYR"
     val clientSecret = "ACSQBB191s"
 
-    fun main(query:String) {
+    fun main(query:String, list: ArrayList<DataDessert>) {
 
         var text: String? = null
         try {
@@ -21,7 +23,7 @@ class NaverSearchPlace {
             throw RuntimeException("검색어 인코딩 실패", e)
         }
 
-        val apiURL = "https://openapi.naver.com/v1/search/local?query=" + text!!    // json 결과
+        val apiURL = "https://openapi.naver.com/v1/search/local?query=" + text!! + "&display=5&" // json 결과
         //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
 
         val requestHeaders : HashMap<String, String> = HashMap()
@@ -29,7 +31,7 @@ class NaverSearchPlace {
         requestHeaders.put("X-Naver-Client-Secret", clientSecret)
         val responseBody = get(apiURL, requestHeaders)
 
-        parseData(responseBody)
+        parseData(responseBody, list)
 
     }
 
@@ -86,8 +88,9 @@ class NaverSearchPlace {
         }
     }
 
-    private fun parseData(responseBody: String) {
+    private fun parseData(responseBody: String, list: ArrayList<DataDessert>) {
         var title: String
+        var address : String
         var jsonObject: JSONObject? = null
         try {
             jsonObject = JSONObject(responseBody)
@@ -96,7 +99,9 @@ class NaverSearchPlace {
             for (i in 0 until jsonArray.length()) {
                 val item = jsonArray.getJSONObject(i)
                 title = item.getString("title")
+                address = item.getString("address")
                 println("TITLE : $title")
+                list.add(DataDessert(null,"$title", "$address", "4.9", null, "999+"))
             }
 
         } catch (e: JSONException) {

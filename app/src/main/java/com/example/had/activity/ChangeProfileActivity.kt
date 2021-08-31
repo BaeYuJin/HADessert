@@ -1,4 +1,4 @@
-package com.example.had
+package com.example.had.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,6 @@ import android.provider.MediaStore
 import android.util.Log
 import com.example.had.databinding.ActivityChangeProfileBinding
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
-import com.theartofdev.edmodo.cropper.CropImage
-import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-import com.theartofdev.edmodo.cropper.CropImage.getActivityResult
 
 
 class ChangeProfileActivity : AppCompatActivity() {

@@ -2,6 +2,7 @@ package com.example.had
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.had.dataclass.DataSearch
 
 /*class PreferenceUtil(context: Context) {
     private val prefs: SharedPreferences = context.getSharedPreferences("my_id", Context.MODE_PRIVATE)

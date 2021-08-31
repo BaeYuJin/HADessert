@@ -1,12 +1,16 @@
-package com.example.had
+package com.example.had.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.had.PreferenceUtil
+import com.example.had.adapter.RecyclerAdapterPopular
+import com.example.had.adapter.RecyclerAdapterRecent
 import com.example.had.databinding.ActivitySearch1Binding
 import com.example.had.databinding.ActivitySearchBinding
+import com.example.had.dataclass.DataSearch
 
 class Search1Activity : AppCompatActivity() {
     private lateinit var binding: ActivitySearch1Binding
@@ -39,6 +43,7 @@ class Search1Activity : AppCompatActivity() {
                 intent.putExtra("word", query)
                 //binding2.textView4.text = query
                 startActivity(intent)
+
                 return true
             }
 
@@ -70,3 +75,4 @@ class Search1Activity : AppCompatActivity() {
         binding.RecentRv.adapter = adapter2
     }
 }
+
