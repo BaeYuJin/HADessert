@@ -12,11 +12,11 @@ class NaverSearchPlace {
     val clientId = "e7llm6I5HcgSi6AKsYYR"
     val clientSecret = "ACSQBB191s"
 
-    fun main() {
+    fun main(query:String) {
 
         var text: String? = null
         try {
-            text = URLEncoder.encode("한성대 맛집", "UTF-8")
+            text = URLEncoder.encode(query, "UTF-8")
         } catch (e: UnsupportedEncodingException) {
             throw RuntimeException("검색어 인코딩 실패", e)
         }

@@ -37,10 +37,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, IntroDessertActivity::class.java))
         }
 
-        /*val thread = Thread {
-                var apiExamSearchBlog = NaverSearchPlace()
-                apiExamSearchBlog.main()
-            }.start()*/
+        /**/
         NaverMapSdk.getInstance(this).client =
                 NaverMapSdk.NaverCloudPlatformClient("enltqog9k1")
 
