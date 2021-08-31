@@ -44,8 +44,9 @@ class MainActivity : AppCompatActivity() {
         NaverMapSdk.getInstance(this).client =
                 NaverMapSdk.NaverCloudPlatformClient("enltqog9k1")
 
-        supportFragmentManager.beginTransaction().replace(R.id.hotPlaceFragment , HotPlaceFragment())
-        transcation.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.hotPlaceMap_fragment , HotPlaceFragment())
+            .commit()
     }
 
     override fun onBackPressed() {
