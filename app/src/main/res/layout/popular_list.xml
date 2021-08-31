@@ -11,6 +11,7 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/im_hyemin_bold"
         android:text="인기검색어"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
