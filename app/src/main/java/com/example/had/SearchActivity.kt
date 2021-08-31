@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.had.databinding.ActivityMainBinding
 import com.example.had.databinding.ActivitySearchBinding
 import com.example.had.databinding.DessertListBinding
+import com.example.test.NaverSearchPlace
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
@@ -15,6 +16,12 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        /*val thread = Thread {
+            var apiExamSearchBlog = NaverSearchPlace()
+            apiExamSearchBlog.main()
+        }.start()*/
 
         binding.mainSearchView2.setOnClickListener {
             startActivity(Intent(this, Search1Activity::class.java))
