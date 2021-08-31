@@ -2,6 +2,8 @@ package com.example.had
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.had.databinding.ActivityIntroDessertBinding
 
 class IntroDessertActivity : AppCompatActivity() {
@@ -15,6 +17,10 @@ class IntroDessertActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initRecycler()
+
+        val gridLayoutManager = GridLayoutManager(applicationContext, 2)
+        gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        binding.introDessertRecyclerView.layoutManager = gridLayoutManager
     }
 
     private fun initRecycler() {

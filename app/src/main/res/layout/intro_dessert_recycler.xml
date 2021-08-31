@@ -2,16 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="190dp"
+    android:layout_height="190dp"
     android:background="@color/background_ivory">
 
     <View
         android:id="@+id/intro_dessert_view"
-        android:layout_width="348dp"
-        android:layout_height="320dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:background="@drawable/layout5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +19,8 @@
 
     <ImageView
         android:id="@+id/intro_dessert_imageView"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/intro_dessert_view"
@@ -36,9 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/im_hyemin_bold"
         android:text="디저트 이름"
         android:textColor="@color/background_purple"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/intro_dessert_imageView"
         app:layout_constraintStart_toStartOf="@+id/intro_dessert_imageView"
