@@ -37,7 +37,7 @@ class SignupActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                TODO("Not yet implemented") // 이혜
             }
 
         }
