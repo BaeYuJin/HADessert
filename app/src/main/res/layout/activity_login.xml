@@ -12,37 +12,37 @@
         android:id="@+id/icon_imageView"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/appName_textView"
+        android:layout_marginTop="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mainicon" />
 
     <TextView
         android:id="@+id/appName_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:fontFamily="@font/im_hyemin_bold"
         android:text="@string/appName"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/loginEmail_editText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icon_imageView" />
 
     <TextView
         android:id="@+id/loginEmail_textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/clear"
         android:fontFamily="@font/im_hyemin_bold"
         android:text="E-mail"
         android:textColor="@color/white"
         android:textColorHint="@color/gray"
-        android:textSize="20sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/loginEmail_editText"
         app:layout_constraintEnd_toStartOf="@+id/loginEmail_editText"
@@ -50,26 +50,31 @@
 
     <EditText
         android:id="@+id/loginEmail_editText"
-        android:layout_width="170dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFFFFF"
         android:ems="10"
+        android:fontFamily="@font/im_hyemin_regular"
         android:hint="example@google.com"
         android:inputType="textEmailAddress"
-        android:textColor="@color/black"
+        android:paddingLeft="3dp"
+        android:textColor="@color/darkgray"
+        android:textColorHint="@color/gray"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/login_button"
-        app:layout_constraintTop_toTopOf="@+id/login_button" />
+        app:layout_constraintEnd_toEndOf="@+id/appName_textView"
+        app:layout_constraintStart_toStartOf="@+id/appName_textView"
+        app:layout_constraintTop_toBottomOf="@+id/appName_textView" />
 
     <TextView
         android:id="@+id/pw_textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/im_hyemin_bold"
         android:text="@string/password"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/pw_editText"
         app:layout_constraintEnd_toStartOf="@+id/pw_editText"
@@ -78,31 +83,34 @@
 
     <EditText
         android:id="@+id/pw_editText"
-        android:layout_width="170dp"
-        android:layout_height="40dp"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
+        android:breakStrategy="simple"
         android:ems="10"
+        android:fontFamily="@font/im_hyemin_regular"
         android:inputType="textPassword"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/login_button"
+        android:paddingLeft="3dp"
+        android:textColor="@color/darkgray"
+        app:layout_constraintEnd_toEndOf="@+id/loginEmail_editText"
+        app:layout_constraintStart_toStartOf="@+id/loginEmail_editText"
         app:layout_constraintTop_toBottomOf="@+id/loginEmail_editText" />
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="90dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginStart="8dp"
         android:backgroundTint="#F1EEE5"
         android:fontFamily="@font/im_hyemin_bold"
         android:text="@string/login"
         android:textColor="@color/background_purple"
-        android:textSize="11sp"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintBottom_toBottomOf="@+id/pw_editText"
+        app:layout_constraintStart_toEndOf="@+id/loginEmail_editText"
+        app:layout_constraintTop_toTopOf="@+id/loginEmail_editText" />
 
     <CheckBox
         android:id="@+id/autoLogin_checkBox"
@@ -113,33 +121,33 @@
         android:text="@string/autoLogin"
         android:textColor="#FFFFFF"
         android:textColorLink="#FFFFFF"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/saveID_checkBox"
         app:layout_constraintTop_toBottomOf="@+id/saveID_checkBox" />
 
     <Button
         android:id="@+id/signUp_button"
-        android:layout_width="45dp"
-        android:layout_height="15dp"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:background="#00FF0000"
         android:fontFamily="@font/im_hyemin_regular"
         android:text="@string/signUp"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/pw_editText"
+        app:layout_constraintEnd_toStartOf="@+id/login_button"
         app:layout_constraintTop_toBottomOf="@+id/pw_editText" />
 
     <Button
         android:id="@+id/changingPW_button"
-        android:layout_width="50dp"
-        android:layout_height="15dp"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
         android:layout_marginTop="4dp"
         android:background="#00FF0000"
         android:fontFamily="@font/im_hyemin_regular"
         android:text="PW 재설정"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/signUp_button"
         app:layout_constraintTop_toBottomOf="@+id/signUp_button" />
@@ -151,9 +159,9 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/im_hyemin_regular"
         android:text="이메일 저장"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/pw_editText"
+        app:layout_constraintStart_toEndOf="@+id/pw_textView"
         app:layout_constraintTop_toBottomOf="@+id/pw_editText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

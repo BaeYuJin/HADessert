@@ -4,11 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.had.AppInfoActivity
 import com.example.had.PreferenceUtil
 import com.example.had.databinding.ActivityProfileBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
+//import com.google.firebase.storage.ktx.storage
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
@@ -16,7 +17,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val storage = Firebase.storage
+        //val storage = Firebase.storage
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -35,7 +36,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.appInfo.setOnClickListener{
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(Intent(this, AppInfoActivity::class.java))
         }
 
         binding.logout.setOnClickListener{
