@@ -13,12 +13,22 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="회원가입"
-        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/signupbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:text="회원가입"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/nametext"
@@ -26,7 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
         android:text="이름 :"
-        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.124"
@@ -34,15 +43,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pwtext"
+        android:id="@+id/idtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="비밀번호 :"
-        android:textColor="#000000"
+        android:text="아이디 :"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/emailtext"
-        app:layout_constraintTop_toBottomOf="@+id/emailtext" />
+        app:layout_constraintEnd_toEndOf="@+id/nametext"
+        app:layout_constraintTop_toBottomOf="@+id/nametext" />
+
+    <TextView
+        android:id="@+id/pwtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="비밀번호 :"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/idtext"
+        app:layout_constraintTop_toBottomOf="@+id/idtext" />
 
     <TextView
         android:id="@+id/pwchecktext"
@@ -50,7 +68,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="재입력 :"
-        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/pwtext"
         app:layout_constraintTop_toBottomOf="@+id/pwtext" />
@@ -59,12 +76,11 @@
         android:id="@+id/emailtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:text="이메일 :"
-        android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/nametext"
-        app:layout_constraintTop_toBottomOf="@+id/nametext" />
+        app:layout_constraintEnd_toEndOf="@+id/pwchecktext"
+        app:layout_constraintTop_toBottomOf="@+id/pwchecktext" />
 
     <TextView
         android:id="@+id/birthtext"
@@ -72,10 +88,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="생년월일 :"
-        android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/pwchecktext"
-        app:layout_constraintTop_toBottomOf="@+id/pwchecktext" />
+        app:layout_constraintEnd_toEndOf="@+id/emailtext"
+        app:layout_constraintTop_toBottomOf="@+id/emailtext" />
 
     <TextView
         android:id="@+id/sextext"
@@ -83,10 +98,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="성별 :"
-        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/birthtext"
         app:layout_constraintTop_toBottomOf="@+id/birthtext" />
+
+    <Button
+        android:id="@+id/idcheckbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="중복확인"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/id"
+        app:layout_constraintStart_toEndOf="@+id/id"
+        app:layout_constraintTop_toTopOf="@+id/id" />
+
+    <Button
+        android:id="@+id/emailcheckbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="중복확인"
+        app:layout_constraintBottom_toBottomOf="@+id/email"
+        app:layout_constraintStart_toEndOf="@+id/email"
+        app:layout_constraintTop_toTopOf="@+id/email" />
 
     <EditText
         android:id="@+id/name"
@@ -96,10 +131,20 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/nametext"
         app:layout_constraintTop_toTopOf="@+id/nametext" />
+
+    <EditText
+        android:id="@+id/id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/idtext"
+        app:layout_constraintTop_toTopOf="@+id/idtext" />
 
     <EditText
         android:id="@+id/pw"
@@ -108,24 +153,19 @@
         android:layout_marginStart="8dp"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="6자리 이상 입력하세요."
         android:inputType="textPassword"
-        android:textColor="#000000"
-        android:textColorHint="@color/lightgray"
         app:layout_constraintStart_toEndOf="@+id/pwtext"
         app:layout_constraintTop_toTopOf="@+id/pwtext" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:orientation="horizontal"
-        android:textColor="#000000"
-        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/emailtext"
         app:layout_constraintTop_toTopOf="@+id/emailtext" />
 
@@ -137,7 +177,6 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPassword"
-        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/pwchecktext"
         app:layout_constraintTop_toTopOf="@+id/pwchecktext" />
 
@@ -148,15 +187,11 @@
         android:layout_marginStart="8dp"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="ex) 20210820"
         android:inputType="date"
-        android:textColor="#000000"
-        android:textColorHint="@color/realLightgray"
         app:layout_constraintStart_toEndOf="@+id/birthtext"
         app:layout_constraintTop_toTopOf="@+id/birthtext" />
 
     <RadioGroup
-        android:id="@+id/radiogroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -169,17 +204,24 @@
             android:id="@+id/male_rbt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="남성"
-            android:textColor="#000000"
-            android:textColorHint="#FFFFFF" />
+            android:text="남성" />
 
         <RadioButton
             android:id="@+id/female_rbt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="여성"
-            android:textColor="#000000" />
+            android:text="여성" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="* 사용 가능한 아이디입니다."
+        android:textColor="#4CAF50"
+        app:layout_constraintStart_toStartOf="@+id/id"
+        app:layout_constraintTop_toBottomOf="@+id/id" />
 
     <TextView
         android:id="@+id/textView14"
@@ -188,50 +230,17 @@
         android:layout_marginTop="8dp"
         android:text="* 비밀번호가 일치하지 않습니다."
         android:textColor="#F44336"
-        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/pwcheck"
         app:layout_constraintTop_toBottomOf="@+id/pwcheck" />
 
-    <Button
-        android:id="@+id/pwbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="일치확인"
-        app:layout_constraintBottom_toBottomOf="@+id/pwcheck"
-        app:layout_constraintStart_toEndOf="@+id/pwcheck"
-        app:layout_constraintTop_toTopOf="@+id/pwcheck" />
-
-    <Button
-        android:id="@+id/signupbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="회원가입"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radiogroup" />
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="* 비밀번호가 일치합니다."
-        android:textColor="#4CAF50"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-    <Spinner
-        android:id="@+id/categoryComboBox"
-        android:layout_width="180dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="@+id/email"
-        app:layout_constraintStart_toEndOf="@+id/email"
-        app:layout_constraintTop_toTopOf="@+id/email" />
+        android:layout_marginTop="8dp"
+        android:text="* 이미 가입된 이메일입니다."
+        android:textColor="#F44336"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
