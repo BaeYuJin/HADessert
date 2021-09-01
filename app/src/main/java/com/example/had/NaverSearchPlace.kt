@@ -32,7 +32,6 @@ class NaverSearchPlace {
         val responseBody = get(apiURL, requestHeaders)
 
         parseData(responseBody, list)
-
     }
 
     private operator fun get(apiUrl: String, requestHeaders: Map<String, String>): String {
@@ -91,6 +90,7 @@ class NaverSearchPlace {
     private fun parseData(responseBody: String, list: ArrayList<DataDessert>) {
         var title: String
         var address : String
+        var category : String
         var jsonObject: JSONObject? = null
         try {
             jsonObject = JSONObject(responseBody)
@@ -98,15 +98,21 @@ class NaverSearchPlace {
 
             for (i in 0 until jsonArray.length()) {
                 val item = jsonArray.getJSONObject(i)
-                title = item.getString("title")
-                address = item.getString("address")
-                println("TITLE : $title")
-                list.add(DataDessert(null,"$title", "$address", "4.9", null, "999+"))
+                if(item.getString("category").contains("카페,디저트")){
+                    title = item.getString("title")
+                    address = item.getString("address")
+                    category = item.getString("category")
+                    println("TITLE : $title")
+                    println("ADDRESS: $address")
+                    println("CATEGORY : $category")
+                    list.add(DataDessert(null,"$title", "$address", "$category", null, "999+"))
+                } else{
+                    continue
+                }
             }
 
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
     }
 }
