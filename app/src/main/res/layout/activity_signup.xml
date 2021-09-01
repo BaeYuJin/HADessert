@@ -233,5 +233,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/email"
         app:layout_constraintStart_toEndOf="@+id/email"
         app:layout_constraintTop_toTopOf="@+id/email" />
+    <!-- 이혜진 바보-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
