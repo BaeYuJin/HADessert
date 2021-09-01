@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
-import com.example.had.HotPlaceFragment
+import com.example.had.fragment.HotPlaceFragment
 import com.example.had.R
 import com.naver.maps.map.NaverMapSdk
 
@@ -18,8 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setContentView(R.layout.activity_main)
-        val transcation = supportFragmentManager.beginTransaction()
 
         // 검색 창 클릭 시 액티비티 이동
         binding.mainSearchView.setOnClickListener {
@@ -41,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.hotPlaceMap_fragment, HotPlaceFragment())
             .commit()
+
+        binding.setLocationTextView.setOnClickListener {
+            startActivity(Intent(this, SetLocationActivity::class.java))
+        }
     }
 
     override fun onBackPressed() {
