@@ -21,12 +21,12 @@
         android:id="@+id/spIcon_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/im_hyemin_bold"
         android:text="@string/splash_appName"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/spIcon_imageView"
         app:layout_constraintEnd_toEndOf="@+id/spIcon_imageView"
-        app:layout_constraintStart_toStartOf="@+id/spIcon_imageView" />
+        app:layout_constraintStart_toStartOf="@+id/spIcon_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/spIcon_imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

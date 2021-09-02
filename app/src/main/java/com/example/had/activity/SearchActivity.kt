@@ -24,21 +24,13 @@ class SearchActivity : AppCompatActivity() {
 
         binding.textView4.text = intent.getStringExtra("word")
 
-
         val thread = Thread {
             var apiExamSearchBlog = NaverSearchPlace()
             apiExamSearchBlog.main(intent.getStringExtra("word").toString(), list)
         }.start()
 
-        //list.add(DataDessert(null,"몽실", "3.7km", "4.9", null, "999+"))
-        //list.add(DataDessert(getDrawable((R.drawable.~~)!!)""))
-        //list.add(DataDessert(null,"몽실", "3.7km", "4.9", null, "999+"))
-        //list.add(DataDessert(null,"몽실", "3.7km", "4.9", null, "999+"))
-
         val adapter = RecyclerAdapterDessert(list)
         binding.dessertRv.adapter = adapter
-
-
 
     }
 }
