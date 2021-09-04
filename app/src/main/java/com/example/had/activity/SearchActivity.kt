@@ -20,7 +20,7 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
 
-        val list = ArrayList<DataDessert>()
+        val list = mutableListOf<DataDessert>()
 
         binding.textView4.text = intent.getStringExtra("word")
 

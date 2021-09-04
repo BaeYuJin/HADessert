@@ -9,7 +9,7 @@ import com.example.had.dataclass.DataSearch
 import com.example.had.databinding.PopularListBinding
 
 
-class RecyclerAdapterPopular(private val items:ArrayList<DataSearch>) : RecyclerView.Adapter<RecyclerAdapterPopular.ViewHolder>() {
+class RecyclerAdapterPopular(private val items:MutableList<DataSearch>) : RecyclerView.Adapter<RecyclerAdapterPopular.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 

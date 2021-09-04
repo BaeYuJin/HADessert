@@ -9,7 +9,7 @@ import com.example.had.dataclass.DataDessert
 import com.example.had.databinding.DessertListBinding
 
 
-class RecyclerAdapterDessert(private val items:ArrayList<DataDessert>) : RecyclerView.Adapter<RecyclerAdapterDessert.ViewHolder>() {
+class RecyclerAdapterDessert(private val items:MutableList<DataDessert>) : RecyclerView.Adapter<RecyclerAdapterDessert.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
