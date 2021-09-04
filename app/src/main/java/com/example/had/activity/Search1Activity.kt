@@ -10,13 +10,17 @@ import com.example.had.adapter.RecyclerAdapterPopular
 import com.example.had.adapter.RecyclerAdapterRecent
 import com.example.had.databinding.ActivitySearch1Binding
 import com.example.had.databinding.ActivitySearchBinding
+import com.example.had.databinding.RecentListBinding
 import com.example.had.dataclass.DataSearch
 
 class Search1Activity : AppCompatActivity() {
     private lateinit var binding: ActivitySearch1Binding
     private lateinit var binding2: ActivitySearchBinding
-    val list = ArrayList<DataSearch>()
-    val list2 = ArrayList<DataSearch>()
+    private lateinit var binding3: RecentListBinding
+    val list = mutableListOf<DataSearch>()
+    val list2 = mutableListOf<DataSearch>()
+
+    private val adapter = RecyclerAdapterPopular(list)
     private val adapter2 = RecyclerAdapterRecent(list2)
 
     var recentWord : String? = null
@@ -27,6 +31,7 @@ class Search1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySearch1Binding.inflate(layoutInflater)
         binding2 = ActivitySearchBinding.inflate(layoutInflater)
+        binding3 = RecentListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         var intent = Intent(this, SearchActivity::class.java)
@@ -34,15 +39,33 @@ class Search1Activity : AppCompatActivity() {
         binding.mainSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 recentWord = query
-                list2.add(DataSearch(recentWord!!))
-                listRecent(list2)
-                /*var intent = Intent(this, SearchActivity::class.java)
-                intent.putExtra("searchword", binding.mainSearchView.toString())*/
-                //var query2 = binding.mainSearchView.query.toString()
-                Log.d("query:", query)
-                intent.putExtra("word", query)
-                //binding2.textView4.text = query
-                startActivity(intent)
+
+                Log.d("list2:", list2.count().toString())
+
+                if(list2.count() == 0){
+                    list2.add(DataSearch(recentWord!!))
+                    listRecent(list2)
+                    // Log.d("query:", query)
+                    intent.putExtra("word", query)
+                    startActivity(intent)
+                }
+                else{
+                    /* for (i in 0..list2.count()) {
+                        /*if(query == list2[i].word){
+                            // Log.d(" 일치함 :", list2[i].word)
+                            continue
+                        }*/
+                        Log.d("list2[i] :", list2[i].word)
+                    } */
+
+                    Log.d("list2[i] :", list2.count().toString())
+
+                    list2.add(DataSearch(recentWord!!))
+                    listRecent(list2)
+                    // Log.d("query:", query)
+                    intent.putExtra("word", query)
+                    startActivity(intent)
+                }
 
                 return true
             }
@@ -61,15 +84,17 @@ class Search1Activity : AppCompatActivity() {
 
         list.add(DataSearch("마카롱"))
         list.add(DataSearch("치즈케이크"))
-        val adapter = RecyclerAdapterPopular(list)
+        // val adapter = RecyclerAdapterPopular(list)
         binding.HotRv.adapter = adapter
 
         //Log.e("sList", sList.toString())
         binding.RecentRv.adapter = adapter2
 
+
+
     }
 
-    fun listRecent(AddList : ArrayList<DataSearch>){
+    fun listRecent(AddList : MutableList<DataSearch>){
         Log.d("LIST2", AddList.toString())
         PreferenceUtil.setRecentWords(this, AddList)
         binding.RecentRv.adapter = adapter2

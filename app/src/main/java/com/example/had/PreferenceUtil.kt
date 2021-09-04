@@ -41,7 +41,7 @@ object PreferenceUtil {
         return prefs.getString("MY_LOGIN", "").toString()
     }
 
-    fun setRecentWords(context: Context, values: ArrayList<DataSearch>) {
+    fun setRecentWords(context: Context, values: MutableList<DataSearch>) {
         val prefs = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
         val editor = prefs.edit()
         val set : Set<String> = HashSet()

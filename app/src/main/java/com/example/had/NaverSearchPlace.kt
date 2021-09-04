@@ -14,7 +14,7 @@ class NaverSearchPlace {
     val clientId = "e7llm6I5HcgSi6AKsYYR"
     val clientSecret = "ACSQBB191s"
 
-    fun main(query:String, list: ArrayList<DataDessert>) {
+    fun main(query:String, list: MutableList<DataDessert>) {
 
         var text: String? = null
         try {
@@ -87,7 +87,7 @@ class NaverSearchPlace {
         }
     }
 
-    private fun parseData(responseBody: String, list: ArrayList<DataDessert>) {
+    private fun parseData(responseBody: String, list: MutableList<DataDessert>) {
         var title: String
         var address : String
         var category : String
