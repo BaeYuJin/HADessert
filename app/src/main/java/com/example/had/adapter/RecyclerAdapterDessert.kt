@@ -9,10 +9,9 @@ import com.example.had.dataclass.DataDessert
 import com.example.had.databinding.DessertListBinding
 
 
-class RecyclerAdapterDessert(private val items:MutableList<DataDessert>) : RecyclerView.Adapter<RecyclerAdapterDessert.ViewHolder>() {
+class RecyclerAdapterDessert(private val items: MutableList<DataDessert>) : RecyclerView.Adapter<RecyclerAdapterDessert.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         val binding = DessertListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }

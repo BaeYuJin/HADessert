@@ -47,8 +47,8 @@
 
     <SearchView
         android:id="@+id/main_searchView"
-        android:layout_width="372dp"
-        android:layout_height="46dp"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/layout5"
