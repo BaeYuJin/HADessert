@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.had.PreferenceUtil
+import com.example.had.PreferenceUtil.getRecentWords
 import com.example.had.adapter.RecyclerAdapterPopular
 import com.example.had.adapter.RecyclerAdapterRecent
 import com.example.had.databinding.ActivitySearch1Binding
@@ -18,14 +19,12 @@ class Search1Activity : AppCompatActivity() {
     private lateinit var binding2: ActivitySearchBinding
     private lateinit var binding3: RecentListBinding
     val list = mutableListOf<DataSearch>()
-    val list2 = mutableListOf<DataSearch>()
+    var list2 = mutableListOf<DataSearch>()
 
     private val adapter = RecyclerAdapterPopular(list)
     private val adapter2 = RecyclerAdapterRecent(list2)
 
     var recentWord : String? = null
-
-    //private val sList = PreferenceUtil.getRecentWords(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,15 +87,16 @@ class Search1Activity : AppCompatActivity() {
         binding.HotRv.adapter = adapter
 
         //Log.e("sList", sList.toString())
+
+        // val testList = getRecentWords(this, "WORD")
+        //Log.d("testLIst", testList.toString())
+
         binding.RecentRv.adapter = adapter2
-
-
-
     }
 
     fun listRecent(AddList : MutableList<DataSearch>){
         Log.d("LIST2", AddList.toString())
-        PreferenceUtil.setRecentWords(this, AddList)
+        PreferenceUtil.setRecentWords(this, "WORD", AddList)
         binding.RecentRv.adapter = adapter2
     }
 }
