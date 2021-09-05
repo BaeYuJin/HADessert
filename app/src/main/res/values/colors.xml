@@ -14,5 +14,6 @@
     <color name="red">#FF0000</color>
     <color name="lightgray">#c0c0c0</color>
     <color name="realLightgray">#dedede</color>
+    <color name="reallyreallyLightgray">#F1F3F5</color>
     <color name="darkgray">#222222</color>
 </resources>
