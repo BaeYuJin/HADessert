@@ -17,7 +17,11 @@ class SetLocationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         var setLocationEditText = binding.setLocationSearchEditText
-        var findingLocationButton = binding.textView6
+        var findingLocationButton = binding.closeButtonTextView
+
+        binding.setLocationBackButton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         setLocationEditText.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -27,18 +31,12 @@ class SetLocationActivity : AppCompatActivity() {
                         setLocationEditText.setText("")
                         findingLocationButton.isVisible = false
                     }
-                } else if (setLocationEditText.toString().isEmpty()) {
-                    findingLocationButton.isVisible = false
                 }
+                if (setLocationEditText.length() == 0)
+                    findingLocationButton.isVisible = false
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
-
-        binding.setLocationBackButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-
-
     }
 }
