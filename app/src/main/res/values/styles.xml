@@ -12,6 +12,10 @@
         <item name="android:textSize">14dp</item>
     </style>
     <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:fontFamily">@font/im_hyemin_regular</item>
+    </style>
+    <style name="mySpinnerStyle">
         <item name="android:textColor">@color/darkgray</item>
         <item name="android:fontFamily">@font/im_hyemin_regular</item>
     </style>
