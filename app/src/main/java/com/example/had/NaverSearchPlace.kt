@@ -23,7 +23,7 @@ class NaverSearchPlace {
             throw RuntimeException("검색어 인코딩 실패", e)
         }
 
-        val apiURL = "https://openapi.naver.com/v1/search/local?query=" + text!! + "&display=5&" // json 결과
+        val apiURL = "https://openapi.naver.com/v1/search/local?query=" + text!! // + "&display=5&" // json 결과
         //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
 
         val requestHeaders : HashMap<String, String> = HashMap()
