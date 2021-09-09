@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, Search1Activity::class.java))
         }
 
-        binding.profileImageButton.setOnClickListener{
+        binding.profileImage.setOnClickListener{
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 

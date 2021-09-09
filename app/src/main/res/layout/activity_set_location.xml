@@ -4,103 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/background_ivory"
     tools:context=".activity.SetLocationActivity">
 
     <TextView
         android:id="@+id/setLocationBack_button"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/x"
-        app:layout_constraintStart_toStartOf="@+id/setLoationTitle_textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/setLoationTitle_textView"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/im_hyemin_bold"
-        android:text="지번, 도로명, 건물명을 입력하세요"
-        android:textColor="@color/black"
-        android:textSize="28dp"
+        android:background="@drawable/x"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setLocationBack_button" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/setLocationSearch_view"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_weight="1"
-        android:background="@drawable/layout7"
-        app:layout_constraintBottom_toBottomOf="@+id/setLocationSearch_editText"
-        app:layout_constraintStart_toEndOf="@+id/setLocationSearch_editText"
-        app:layout_constraintTop_toTopOf="@+id/setLocationSearch_editText" />
-
-    <ImageView
-        android:id="@+id/setLocation_imageView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/setLocationSearch_view"
-        app:layout_constraintEnd_toEndOf="@+id/setLocationSearch_view"
-        app:layout_constraintStart_toStartOf="@+id/setLocationSearch_view"
-        app:layout_constraintTop_toTopOf="@+id/setLocationSearch_view"
-        app:srcCompat="@drawable/loupe" />
-
-    <View
-        android:id="@+id/setLocation_view"
-        android:layout_width="388dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/layout7"
-        app:layout_constraintEnd_toEndOf="@+id/setLocationSearch_view"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/setLocationSearch_editText"
-        app:layout_constraintTop_toBottomOf="@+id/setLocationSearch_editText" />
-
-    <TextView
-        android:id="@+id/setLocationGuide_textView"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/im_hyemin_bold"
-        android:text="현 위치로 주소 설정"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/setLocation_view"
-        app:layout_constraintEnd_toEndOf="@+id/setLocation_view"
-        app:layout_constraintStart_toStartOf="@+id/setLocation_view"
-        app:layout_constraintTop_toTopOf="@+id/setLocation_view" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setLocationBack_button">
 
-    <EditText
-        android:id="@+id/setLocationSearch_editText"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/layout8"
-        android:ems="10"
-        android:fontFamily="@font/im_hyemin_bold"
-        android:hint="예) 성북구 삼선교로 16길 116"
-        android:inputType="textPersonName"
-        android:maxLength="16"
-        android:paddingLeft="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/setLoationTitle_textView"
-        app:layout_constraintTop_toBottomOf="@+id/setLoationTitle_textView" />
+        <TextView
+            android:id="@+id/closeButton_textView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/x3"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/setLocationSearch_editText"
+            app:layout_constraintEnd_toEndOf="@+id/setLocationSearch_editText"
+            app:layout_constraintTop_toTopOf="@+id/setLocationSearch_editText" />
 
-    <TextView
-        android:id="@+id/closeButton_textView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/x3"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/setLocationSearch_editText"
-        app:layout_constraintEnd_toEndOf="@+id/setLocationSearch_editText"
-        app:layout_constraintTop_toTopOf="@+id/setLocationSearch_editText" />
+        <View
+            android:id="@+id/setLocationSearch_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/layout7"
+            app:layout_constraintBottom_toBottomOf="@+id/setLocationSearch_editText"
+            app:layout_constraintEnd_toEndOf="@+id/setLocation_view"
+            app:layout_constraintTop_toTopOf="@+id/setLocationSearch_editText" />
+
+        <View
+            android:id="@+id/setLocation_view"
+            android:layout_width="388dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/layout7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setLocationSearch_editText" />
+
+        <ImageView
+            android:id="@+id/setLocation_imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/setLocationSearch_view"
+            app:layout_constraintEnd_toEndOf="@+id/setLocationSearch_view"
+            app:layout_constraintStart_toStartOf="@+id/setLocationSearch_view"
+            app:layout_constraintTop_toTopOf="@+id/setLocationSearch_view"
+            app:srcCompat="@drawable/loupe" />
+
+        <EditText
+            android:id="@+id/setLocationSearch_editText"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/layout8"
+            android:ems="10"
+            android:fontFamily="@font/im_hyemin_bold"
+            android:hint="예) 성북구 삼선교로 16길 116"
+            android:inputType="textPersonName"
+            android:maxLength="16"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/setLocation_view"
+            app:layout_constraintTop_toBottomOf="@+id/setLoationTitle_textView" />
+
+        <TextView
+            android:id="@+id/setLocationGuide_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/im_hyemin_bold"
+            android:text="현 위치로 주소 설정"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/setLocation_view"
+            app:layout_constraintStart_toStartOf="@+id/setLocation_view"
+            app:layout_constraintTop_toTopOf="@+id/setLocation_view" />
+
+        <TextView
+            android:id="@+id/setLoationTitle_textView"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/im_hyemin_bold"
+            android:text="지번, 도로명, 건물명을 입력하세요"
+            android:textColor="@color/black"
+            android:textSize="28dp"
+            app:layout_constraintStart_toStartOf="@+id/setLocationSearch_editText"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
