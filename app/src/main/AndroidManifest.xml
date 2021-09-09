@@ -6,6 +6,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--    Location     -->
+    <!--    정확한 위치    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--    대락적인 위치  -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -35,6 +40,7 @@
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.Search1Activity" />
         <activity android:name=".activity.IntroDessertActivity" />
+        <activity android:name=".activity.SetNowLocationActivity"/>
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
