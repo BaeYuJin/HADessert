@@ -4,6 +4,8 @@
         <item name="android:textColor">@color/darkgray</item>
         <item name="android:editTextColor">@color/darkgray</item>
         <item name="android:textColorHint">@color/gray</item>
+        <item name="android:fontFamily">@font/im_hyemin_regular</item>
+        <item name="android:textSize">15dp</item>
     </style>
     <style name="ToolbarTheme">
         <item name="android:textColorHint">@color/gray</item>

@@ -58,20 +58,18 @@
                     app:layout_constraintStart_toEndOf="@+id/main_textView"
                     app:layout_constraintTop_toTopOf="@+id/main_textView" />
 
-                <ImageButton
-                    android:id="@+id/profile_imageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="175dp"
-                    android:adjustViewBounds="true"
-                    android:background="#00FF0000"
-                    android:maxWidth="50dp"
-                    android:maxHeight="50dp"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toEndOf="@+id/mainBar_imageView"
-                    app:layout_constraintStart_toEndOf="@+id/main_textView"
-                    app:layout_constraintTop_toTopOf="@+id/main_textView"
-                    app:srcCompat="@drawable/profile" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.848"
+                    app:layout_constraintStart_toEndOf="@+id/setLocation_textView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
                 <View
                     android:id="@+id/mainSearch_view"
@@ -105,7 +103,7 @@
                     android:fontFamily="@font/im_hyemin_regular"
                     android:text="요즘 가장 인기있는 디저트는?"
                     android:textColor="@color/gray"
-                    android:textSize="12sp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@+id/mainSearch_view"
                     app:layout_constraintStart_toEndOf="@+id/mainSearch_textView"
                     app:layout_constraintTop_toTopOf="@+id/mainSearch_view" />
