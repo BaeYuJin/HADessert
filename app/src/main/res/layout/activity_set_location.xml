@@ -20,6 +20,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +50,7 @@
 
         <View
             android:id="@+id/setLocation_view"
-            android:layout_width="388dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/layout7"
@@ -68,9 +70,10 @@
 
         <EditText
             android:id="@+id/setLocationSearch_editText"
-            android:layout_width="330dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/layout8"
             android:ems="10"
             android:fontFamily="@font/im_hyemin_bold"
@@ -81,6 +84,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/gray"
             android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/setLocationSearch_view"
             app:layout_constraintStart_toStartOf="@+id/setLocation_view"
             app:layout_constraintTop_toBottomOf="@+id/setLoationTitle_textView" />
 
@@ -90,7 +94,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/im_hyemin_bold"
             android:text="현 위치로 주소 설정"
-            android:textColor="@color/black"
+            android:textColor="@color/darkgray"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/setLocation_view"
@@ -99,12 +103,12 @@
 
         <TextView
             android:id="@+id/setLoationTitle_textView"
-            android:layout_width="280dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/im_hyemin_bold"
-            android:text="지번, 도로명, 건물명을 입력하세요"
-            android:textColor="@color/black"
+            android:text="지번, 도로명, 건물명을 \n입력하세요"
+            android:textColor="@color/darkgray"
             android:textSize="28dp"
             app:layout_constraintStart_toStartOf="@+id/setLocationSearch_editText"
             app:layout_constraintTop_toTopOf="parent" />

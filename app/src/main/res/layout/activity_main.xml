@@ -35,14 +35,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="240dp"
                     android:fontFamily="@font/im_hyemin_bold"
                     android:text="@string/location"
                     android:textColor="@color/background_ivory"
                     android:textSize="36sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/mainBar_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/mainSearch_view"
                     app:layout_constraintTop_toTopOf="@+id/mainBar_imageView" />
 
                 <TextView
@@ -65,9 +63,7 @@
                     android:layout_marginTop="16dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/profile_image"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.848"
-                    app:layout_constraintStart_toEndOf="@+id/setLocation_textView"
+                    app:layout_constraintEnd_toEndOf="@+id/mainSearch_view"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
 

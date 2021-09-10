@@ -41,26 +41,6 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/appSetting"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:fontFamily="@font/im_hyemin_regular"
-            android:text="설정"
-            android:textAlignment="gravity"
-            android:textColor="@color/background_ivory"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/appInfo"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:fontFamily="@font/im_hyemin_regular"
-            android:text="앱 정보"
-            android:textAlignment="gravity"
-            android:textColor="@color/background_ivory"
-            android:textSize="24sp" />
-
-        <TextView
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
