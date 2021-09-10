@@ -1,9 +1,9 @@
 package com.example.had.activity
 
-import android.location.LocationListener
-import android.location.LocationManager
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.had.databinding.ActivityMainBinding
 import com.example.had.databinding.ActivitySetNowLocationBinding
 
 class SetNowLocationActivity : AppCompatActivity() {
@@ -14,5 +14,8 @@ class SetNowLocationActivity : AppCompatActivity() {
         binding = ActivitySetNowLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.setLocationNowBackButton2.setOnClickListener {
+            startActivity(Intent(this, SetLocationActivity::class.java))
+        }
     }
 }
