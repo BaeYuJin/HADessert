@@ -26,17 +26,8 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, ChangeProfileActivity::class.java))
         }
 
-
         binding.likedStore.setOnClickListener{
             startActivity(Intent(this, ProfileActivity::class.java))
-        }
-
-        binding.appSetting.setOnClickListener{
-            startActivity(Intent(this, AppSettingActivity::class.java))
-        }
-
-        binding.appInfo.setOnClickListener{
-            startActivity(Intent(this, AppInfoActivity::class.java))
         }
 
         binding.logout.setOnClickListener{
