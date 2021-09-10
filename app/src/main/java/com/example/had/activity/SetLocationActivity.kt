@@ -40,7 +40,7 @@ class SetLocationActivity : AppCompatActivity() {
         })
 
         binding.setLocationView.setOnClickListener {
-
+            startActivity(Intent(this, SetNowLocationActivity::class.java))
         }
     }
 }
