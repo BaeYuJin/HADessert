@@ -1,11 +1,13 @@
 package com.example.had.activity
 
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.had.fragment.HotPlaceFragment
 import com.example.had.R
 import com.naver.maps.map.NaverMapSdk
@@ -28,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        binding.introDessertView.setOnClickListener {
+        binding.textView8.setOnClickListener {
             startActivity(Intent(this, IntroDessertActivity::class.java))
         }
 
@@ -42,6 +44,21 @@ class MainActivity : AppCompatActivity() {
 
         binding.setLocationTextView.setOnClickListener {
             startActivity(Intent(this, SetLocationActivity::class.java))
+        }
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("마카롱")
+        builder.setMessage("마카롱(macaron)은 작고 동그란 모양의 머랭 크러스트(meringue crust) 사이에 잼, 가나슈(ganache), 버터크림 등의 필링(filling)을 채워 만든 프랑스 쿠키이다.")
+        builder.setNeutralButton("확인",{dialogInterface: DialogInterface?, i:Int-> })
+        binding.imageView9.setOnClickListener {
+            builder.show()
+        }
+        val builder2 = AlertDialog.Builder(this)
+        builder2.setTitle("다쿠아즈")
+        builder2.setMessage("다쿠아즈(Dacquoise)는 프랑스 누벨아키텐 레지옹(Région) 랑드 데파르트망(Département) 닥스 지방에 전해 내려오는 겉이 바삭하고 속이 부드럽고 폭신한 과자이다.")
+        builder2.setNeutralButton("확인",{dialogInterface: DialogInterface?, i:Int-> })
+        binding.imageView10.setOnClickListener {
+            builder2.show()
         }
     }
 
