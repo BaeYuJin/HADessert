@@ -84,7 +84,7 @@ class Search1Activity : AppCompatActivity() {
         list.add(DataSearch("마카롱"))
         list.add(DataSearch("치즈케이크"))
         // val adapter = RecyclerAdapterPopular(list)
-        binding.HotRv.adapter = adapter
+        //binding.HotRv.adapter = adapter
 
         //Log.e("sList", sList.toString())
 
