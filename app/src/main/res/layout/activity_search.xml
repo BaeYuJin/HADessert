@@ -46,7 +46,7 @@
         android:id="@+id/dessert_rv"
         android:layout_width="369dp"
         android:layout_height="485dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="25dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
