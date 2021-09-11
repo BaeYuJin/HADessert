@@ -14,9 +14,10 @@ class KakaoApi {
 }
 
 interface KakaoApiService {
-    @GET("v2/local/search/keyword.json")
+    @GET("v2/local/search/keyword.json") // keyword.json의 정보를 받아옴
     fun getkakaoAddress(
-        @Header("Authorization") key : String,
-        @Query("query") address: String
+        @Header("Authorization") key : String,  // 카카오 API 인증키
+        @Query("query") query: String,         // 검색을 원하는 질의어
+        @Query("category_group_code") category_group_code: String,
     ): Call<KakaoData>
 }
