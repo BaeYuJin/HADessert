@@ -2,12 +2,15 @@ package com.example.had.dataclass
 
 data class Document(
     val address_name: String,
-    val code: String,
-    val region_1depth_name: String,
-    val region_2depth_name: String,
-    val region_3depth_name: String,
-    val region_4depth_name: String,
-    val region_type: String,
-    val x: Double,
-    val y: Double
+    val category_group_code: String,
+    val category_group_name: String,
+    val category_name: String,
+    val distance: String,
+    val id: String,
+    val phone: String,
+    val place_name: String,
+    val place_url: String,
+    val road_address_name: String,
+    val x: String,
+    val y: String
 )
