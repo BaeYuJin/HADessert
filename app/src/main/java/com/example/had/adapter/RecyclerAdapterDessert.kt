@@ -36,7 +36,7 @@ class RecyclerAdapterDessert(private val items: MutableList<DataDessert>) : Recy
             binding.distance.text = item.distance
             binding.starscore.text = item.star
             //binding.heart.setImageDrawable(item.heart)
-            binding.heartcnt.text = item.heartcnt
+            //binding.heartcnt.text = item.heartcnt
 
             binding.blankheart.setOnClickListener {
                 binding.heart.setVisibility(View.VISIBLE)
