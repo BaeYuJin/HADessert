@@ -29,6 +29,16 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
 
+        list.add(DataDessert(null, "학림다방", "서울 종로구 명륜4가 94-2", "4.9"))
+        list.add(DataDessert(null, "카페키이로", "서울 종로구 명륜4가 154-2", "4.9"))
+        list.add(DataDessert(null, "칠린", "서울 종로구 명륜4가 167-2", "4.9"))
+        list.add(DataDessert(null, "블루룸", "서울 종로구 명륜4가 66-3", "4.9"))
+        list.add(DataDessert(null, "카페혜화동", "서울 종로구 명륜4가 145", "4.9"))
+        list.add(DataDessert(null, "혜화역4번출구카페제이드", "서울 종로구 혜화동 136", "4.9"))
+        list.add(DataDessert(null, "서화커피", "서울 종로구 명륜4가 140-9", "4.9"))
+        list.add(DataDessert(null, "스노브 대학로점", "서울 종로구 명륜4가 85-1", "4.9"))
+        list.add(DataDessert(null, "낫컴플리트", "서울 종로구 명륜2가 150-2", "4.9"))
+        list.add(DataDessert(null, "브라운에비뉴", "서울 종로구 명륜2가 237", "4.9"))
 
 
 
@@ -59,12 +69,16 @@ class SearchActivity : AppCompatActivity() {
 
                     for (i in 0 until count){
                         Log.d("Test", "${kakao.value!!.documents[i].place_name}")
-                        list.add(DataDessert(null,"${kakao.value!!.documents[i].place_name}", "3.7km", "4.9", null, "999+"))
+                        list.add(DataDessert(null,"${kakao.value!!.documents[i].place_name}", "3.7km", "4.9"))
                     }
-                    if (count == 0)
+                    if (count == 0) {
                         binding.textView2.setVisibility(View.VISIBLE)
-                    else
+                        binding.dessertRv.setVisibility(View.INVISIBLE)
+                    }
+                    else {
                         binding.textView2.setVisibility(View.INVISIBLE)
+                        binding.dessertRv.setVisibility(View.VISIBLE)
+                    }
                 }
 
                 override fun onFailure(call: Call<KakaoData>, t: Throwable) {
