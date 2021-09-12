@@ -2,6 +2,7 @@ package com.example.had.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import com.example.had.KakaoApi
@@ -60,6 +61,10 @@ class SearchActivity : AppCompatActivity() {
                         Log.d("Test", "${kakao.value!!.documents[i].place_name}")
                         list.add(DataDessert(null,"${kakao.value!!.documents[i].place_name}", "3.7km", "4.9", null, "999+"))
                     }
+                    if (count == 0)
+                        binding.textView2.setVisibility(View.VISIBLE)
+                    else
+                        binding.textView2.setVisibility(View.INVISIBLE)
                 }
 
                 override fun onFailure(call: Call<KakaoData>, t: Throwable) {
