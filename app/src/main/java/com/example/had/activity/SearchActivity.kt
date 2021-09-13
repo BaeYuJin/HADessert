@@ -83,6 +83,9 @@ class SearchActivity : AppCompatActivity() {
 
                     for (i in 0 until count){
                         Log.d("Test", "${kakao.value!!.documents[i].place_name}")
+                        Log.d("Test", "${kakao.value!!.documents[i].address_name}")
+                        Log.d("Test", "${kakao.value!!.documents[i].road_address_name}")
+                        Log.d("Test", "${kakao.value!!.documents[i].phone}")
                         list.add(DataDessert(null,"${kakao.value!!.documents[i].place_name}", "3.7km", "4.9"))
                     }
                     if (count == 0) {
