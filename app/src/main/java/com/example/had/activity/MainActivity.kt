@@ -5,12 +5,17 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.had.fragment.HotPlaceFragment
 import com.example.had.R
-import com.naver.maps.map.NaverMapSdk
+import net.daum.android.map.MapView
+import net.daum.mf.map.api.MapPOIItem
+import net.daum.mf.map.api.MapPoint
+
+//import com.naver.maps.map.NaverMapSdk
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -34,13 +39,20 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, IntroDessertActivity::class.java))
         }
 
-        /**/
+        /*val mapView = MapView(this)  카카오매배배배배배뱁
+        val mapViewContainer = binding.mapView as ViewGroup
+        mapViewContainer.addView(mapView)*/
+
+        /*
         NaverMapSdk.getInstance(this).client =
                 NaverMapSdk.NaverCloudPlatformClient("enltqog9k1")
 
-        supportFragmentManager.beginTransaction()
+         */
+
+        /*supportFragmentManager.beginTransaction()
             .replace(R.id.hotPlaceMap_fragment, HotPlaceFragment())
             .commit()
+         */
 
         binding.setLocationTextView.setOnClickListener {
             startActivity(Intent(this, SetLocationActivity::class.java))

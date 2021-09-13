@@ -193,7 +193,7 @@
 
                 </FrameLayout>-->
 
-                <fragment
+                <!--<fragment
                     android:id="@+id/hotPlaceMap_fragment"
                     android:name="com.naver.maps.map.MapFragment"
                     android:layout_width="330dp"
@@ -202,6 +202,11 @@
                     app:layout_constraintEnd_toEndOf="@+id/hotPlace_view"
                     app:layout_constraintStart_toStartOf="@+id/hotPlace_view"
                     app:layout_constraintTop_toBottomOf="@+id/hotPlace_textView" />
+
+                <RelativeLayout
+                    android:id="@+id/map_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />-->
 
                 <TextView
                     android:id="@+id/textView6"
