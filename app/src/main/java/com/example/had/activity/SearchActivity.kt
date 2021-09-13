@@ -29,16 +29,30 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
 
-        list.add(DataDessert(null, "학림다방", "서울 종로구 명륜4가 94-2", "4.9"))
-        list.add(DataDessert(null, "카페키이로", "서울 종로구 명륜4가 154-2", "4.9"))
-        list.add(DataDessert(null, "칠린", "서울 종로구 명륜4가 167-2", "4.9"))
-        list.add(DataDessert(null, "블루룸", "서울 종로구 명륜4가 66-3", "4.9"))
-        list.add(DataDessert(null, "카페혜화동", "서울 종로구 명륜4가 145", "4.9"))
-        list.add(DataDessert(null, "혜화역4번출구카페제이드", "서울 종로구 혜화동 136", "4.9"))
-        list.add(DataDessert(null, "서화커피", "서울 종로구 명륜4가 140-9", "4.9"))
-        list.add(DataDessert(null, "스노브 대학로점", "서울 종로구 명륜4가 85-1", "4.9"))
-        list.add(DataDessert(null, "낫컴플리트", "서울 종로구 명륜2가 150-2", "4.9"))
-        list.add(DataDessert(null, "브라운에비뉴", "서울 종로구 명륜2가 237", "4.9"))
+        if (intent.getStringExtra("word").toString()=="혜화 카페") {
+            list.add(DataDessert(null, "학림다방", "서울 종로구 명륜4가 94-2", "4.9"))
+            list.add(DataDessert(null, "카페키이로", "서울 종로구 명륜4가 154-2", "4.9"))
+            list.add(DataDessert(null, "칠린", "서울 종로구 명륜4가 167-2", "4.9"))
+            list.add(DataDessert(null, "블루룸", "서울 종로구 명륜4가 66-3", "4.9"))
+            list.add(DataDessert(null, "카페혜화동", "서울 종로구 명륜4가 145", "4.9"))
+            list.add(DataDessert(null, "혜화역4번출구카페제이드", "서울 종로구 혜화동 136", "4.9"))
+            list.add(DataDessert(null, "서화커피", "서울 종로구 명륜4가 140-9", "4.9"))
+            list.add(DataDessert(null, "스노브 대학로점", "서울 종로구 명륜4가 85-1", "4.9"))
+            list.add(DataDessert(null, "낫컴플리트", "서울 종로구 명륜2가 150-2", "4.9"))
+            list.add(DataDessert(null, "브라운에비뉴", "서울 종로구 명륜2가 237", "4.9"))
+        }
+        else if (intent.getStringExtra("word").toString()=="수원 카페") {
+            list.add(DataDessert(null, "정지영커피로스터즈 장안문점", "경기 수원시 팔달구 장안동 22-15", "4.9"))
+            list.add(DataDessert(null, "카페디아즈", "경기 수원시 팔달구 인계동 1119-8", "4.9"))
+            list.add(DataDessert(null, "책발전소 광교점", "경기 수원시 영통구 원천동 593", "4.9"))
+            list.add(DataDessert(null, "콜링우드", "경기 수원시 팔달구 북수동 145-1", "4.9"))
+            list.add(DataDessert(null, "정지영커피로스터즈 화홍문점", "경기 수원시 팔달구 북수동 33-7", "4.9"))
+            list.add(DataDessert(null, "카페드단아한 광교본점", "경기 수원시 영통구 이의동 1369-2", "4.9"))
+            list.add(DataDessert(null, "경안당", "경기 수원시 팔달구 장안동 124", "4.9"))
+            list.add(DataDessert(null, "행궁맨션", "경기 수원시 팔달구 장안동 53-8", "4.9"))
+            list.add(DataDessert(null, "카페 도안", "경기 수원시 팔달구 인계동 1118-7", "4.9"))
+            list.add(DataDessert(null, "홍라드", "경기 수원시 팔달구 북수동 344-1", "4.9"))
+        }
 
 
 
