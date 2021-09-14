@@ -26,6 +26,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import com.google.type.LatLng
 import net.daum.mf.map.api.MapPOIItem
 //import com.example.had.databinding.ActivitySetNowLocationBinding
 import net.daum.mf.map.api.MapView
@@ -90,11 +91,15 @@ class MainActivity : AppCompatActivity() {
         val mapViewContainer = binding.mapView as ViewGroup
         val locationIntent = intent
 
+        var location: Location? = null
+        var currentPosition: com.google.android.gms.maps.model.LatLng? = null
+
         val nowLatitude = locationIntent.getDoubleExtra("latitude", 0.0)
         val nowLongitude = locationIntent.getDoubleExtra("longitude", 0.0)
+        currentPosition =
+            com.google.android.gms.maps.model.LatLng(nowLatitude, nowLongitude)
 
-        val uNowPosition = MapPoint.mapPointWithGeoCoord(37.53737528, 127.0055763310)
-        mapView.setMapCenterPoint(uNowPosition, true)
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.53737528, 127.0055763310), true)
         mapViewContainer.addView(mapView)
 
         /*val mapView = MapView(this)

@@ -81,8 +81,9 @@ class SetNowLocationActivity() : AppCompatActivity(), OnMapReadyCallback,
         binding.setNowLoationButtonButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("location", getCurrentAddress(currentPosition!!))
-            intent.putExtra("latitude", currentPosition!!.latitude)
-            intent.putExtra("longitude", currentPosition!!.longitude)
+            intent.putExtra("position", currentPosition)
+            intent.putExtra("latitude", location!!.latitude)
+            intent.putExtra("longitude", location!!.longitude)
             startActivity(intent)
         }
     }
