@@ -5,8 +5,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
@@ -14,20 +12,16 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.example.had.FireStorageViewModel
-import com.example.had.fragment.HotPlaceFragment
 import com.example.had.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 //import com.example.had.databinding.ActivitySetNowLocationBinding
-import net.daum.android.map.MapView
-import net.daum.mf.map.api.MapPOIItem
-import net.daum.mf.map.api.MapPoint
 import java.io.File
-import org.w3c.dom.Text
 
 //import com.naver.maps.map.NaverMapSdk
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -43,8 +37,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        downloadFirebaseImage(imageRefUrl)
-
         viewModel.setImage(binding.profileImage)
 
         // 검색 창 클릭 시 액티비티 이동
@@ -122,14 +114,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun downloadFirebaseImage(imageRef: StorageReference?){
-        val localFile = File.createTempFile("images", "jpg")
 
-        imageRef?.getFile(localFile)?.addOnSuccessListener {
-            // Local temp file has been created
-            //R.drawable.profile. = localFile
-        }?.addOnFailureListener {
-            // Handle any errors
-        }
-    }
 }
