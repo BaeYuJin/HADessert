@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.had.AppInfoActivity
+import com.example.had.FireStorageViewModel
 import com.example.had.PreferenceUtil
 import com.example.had.databinding.ActivityProfileBinding
 import com.google.firebase.auth.ktx.auth
@@ -24,6 +26,7 @@ import com.google.firebase.storage.ktx.storage
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     val user = Firebase.auth.currentUser
+    private val viewModel: FireStorageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,7 @@ class ProfileActivity : AppCompatActivity() {
         val database = Firebase.database
         val reference = database.getReference("Users")
 
+        viewModel.setImage(binding.profileImage)
         user?.let {
             // Name, email address, and profile photo Url
             val name = user.displayName
