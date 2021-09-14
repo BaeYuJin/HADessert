@@ -1,29 +1,35 @@
 package com.example.had.activity
 
 
+import android.Manifest
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import com.example.had.fragment.HotPlaceFragment
 import com.example.had.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
-//import com.example.had.databinding.ActivitySetNowLocationBinding
-import net.daum.android.map.MapView
 import net.daum.mf.map.api.MapPOIItem
+//import com.example.had.databinding.ActivitySetNowLocationBinding
+import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapPoint
 import java.io.File
-import org.w3c.dom.Text
+import kotlin.system.exitProcess
 
 //import com.naver.maps.map.NaverMapSdk
 
@@ -36,6 +42,8 @@ class MainActivity : AppCompatActivity() {
     private val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
     private val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
 
+    val PERMISSIONS_REQUEST_CODE = 100
+    var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,9 +82,10 @@ class MainActivity : AppCompatActivity() {
             locaBuilder.show()
         }
 
-        /*val mapView = MapView(this)  카카오매배배배배배뱁
+        val mapView = MapView(this)
         val mapViewContainer = binding.mapView as ViewGroup
-        mapViewContainer.addView(mapView)*/
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.53737528, 127.0055763310), true)
+        mapViewContainer.addView(mapView)
 
         /*
         NaverMapSdk.getInstance(this).client =
@@ -91,6 +100,51 @@ class MainActivity : AppCompatActivity() {
 
         binding.setLocationTextView.setOnClickListener {
             startActivity(Intent(this, SetLocationActivity::class.java))
+        }
+
+        binding.mapLocationButton.setOnClickListener {
+            val locationIntent = intent
+
+            val nowLatitude = locationIntent.getDoubleExtra("latitude", 0.0)
+            val nowLongitude = locationIntent.getDoubleExtra("longitude", 0.0)
+
+            val permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+
+            val uNowPosition = MapPoint.mapPointWithGeoCoord(37.53737528, 127.00557633)
+            mapView.setMapCenterPoint(uNowPosition, true)
+            mapViewContainer.addView(mapView)
+
+            /*val marker = MapPOIItem()
+            marker.apply {
+                itemName = "서울시청"   // 마커 이름
+                mapPoint = MapPoint.mapPointWithGeoCoord(37.5666805, 126.9784147)   // 좌표
+                markerType = MapPOIItem.MarkerType.CustomImage          // 마커 모양 (커스텀)
+                customImageResourceId = R.drawable.이미지               // 커스텀 마커 이미지
+                selectedMarkerType = MapPOIItem.MarkerType.CustomImage  // 클릭 시 마커 모양 (커스텀)
+                customSelectedImageResourceId = R.drawable.이미지       // 클릭 시 커스텀 마커 이미지
+                isCustomImageAutoscale = false      // 커스텀 마커 이미지 크기 자동 조정
+                setCustomImageAnchor(0.5f, 1.0f)    // 마커 이미지 기준점
+            }
+            mapView.addPOIItem(marker)*/
+
+            /*if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                val lm: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+                try {
+                    lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                    val uNowPosition = MapPoint.mapPointWithGeoCoord(nowLatitude, nowLongitude)
+                    mapView.setMapCenterPoint(uNowPosition, true)
+                }catch(e: NullPointerException){
+                    Log.e("LOCATION_ERROR", e.toString())
+                    ActivityCompat.finishAffinity(this)
+
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    exitProcess(0)
+                }
+            }else{
+                Toast.makeText(this, "위치 권한이 없습니다.", Toast.LENGTH_SHORT).show()
+                ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE )
+            }*/
         }
 
         val builder = AlertDialog.Builder(this)
