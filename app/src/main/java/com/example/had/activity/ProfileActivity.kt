@@ -11,6 +11,10 @@ import com.example.had.AppInfoActivity
 import com.example.had.PreferenceUtil
 import com.example.had.databinding.ActivityProfileBinding
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
@@ -27,6 +31,8 @@ class ProfileActivity : AppCompatActivity() {
         val storage = Firebase.storage
         val storageRef = storage.reference
         val storageReference = Firebase.storage.reference
+        val database = Firebase.database
+        val reference = database.getReference("Users")
 
         user?.let {
             // Name, email address, and profile photo Url
@@ -41,6 +47,18 @@ class ProfileActivity : AppCompatActivity() {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             val uid = user.uid
+        }
+
+        if (user != null) {
+            reference.child(user.uid).child("name").addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val name = dataSnapshot.value.toString()
+                    binding.userName.text = name
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                }
+            })
         }
 
         val pathReference = storageRef.child("profileImages/${user?.uid}.jpg")
