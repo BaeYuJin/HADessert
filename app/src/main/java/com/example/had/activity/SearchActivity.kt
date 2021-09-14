@@ -78,7 +78,6 @@ class SearchActivity : AppCompatActivity() {
                         binding.textView2.setVisibility(View.INVISIBLE)
                         binding.dessertRv.setVisibility(View.VISIBLE)
                     }
-
                     adapter.notifyDataSetChanged()
                 }
                 override fun onFailure(call: Call<KakaoData>, t: Throwable) {
