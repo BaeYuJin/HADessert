@@ -17,8 +17,7 @@
         <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/activity_search.xml" value="0.1585144927536232" />
         <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/activity_search1.xml" value="0.1585144927536232" />
-        <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/activity_set_location.xml" value="0.2" />
-        <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/activity_set_now_location.xml" value="0.264" />
+        <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/activity_set_location.xml" value="0.4" />
         <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/fragment_blank.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/hansung/StudioProjects/HADessert/app/src/main/res/layout/fragment_hot_place.xml" value="0.176" />
@@ -33,39 +32,29 @@
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_app_setting.xml" value="0.4" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_change_profile.xml" value="0.4" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_changingidpw.xml" value="0.536" />
-        <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_findingidpw.xml" value="0.13645833333333332" />
+        <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_findingidpw.xml" value="0.2" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_idpwfinding.xml" value="0.4" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_intro_dessert.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_intro_dessert_list.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_profile.xml" value="0.2" />
-        <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_search.xml" value="0.536" />
+        <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_search.xml" value="0.176" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_search1.xml" value="0.4352100089365505" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_set_location.xml" value="0.4" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_set_now_location.xml" value="0.264" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_signup.xml" value="0.4" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/activity_splash.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/dessert_list.xml" value="0.4" />
+        <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/dessert_list.xml" value="0.536" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/fragment_hot_place.xml" value="0.13645833333333332" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/fragment_set_location_now.xml" value="0.136" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/intro_desserts_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/introduce_desserts.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/popular_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/recent_list.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/layout/star_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/qew/StudioProjects/HADessert/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/qhrms.DESKTOP-6KE9FVU/AndroidStudioProjects/HADessert/app/src/main/res/layout/activity_login.xml" value="0.23505434782608695" />
-        <entry key="..\:/Users/qhrms.DESKTOP-6KE9FVU/AndroidStudioProjects/HADessert/app/src/main/res/layout/activity_main.xml" value="0.16802536231884058" />
-        <entry key="..\:/Users/qhrms.DESKTOP-6KE9FVU/AndroidStudioProjects/HADessert/app/src/main/res/layout/activity_search.xml" value="0.23505434782608695" />
-        <entry key="..\:/Users/qhrms.DESKTOP-6KE9FVU/AndroidStudioProjects/HADessert/app/src/main/res/layout/star_list.xml" value="0.16802536231884058" />
-        <entry key="app/src/main/res/layout/activity_change_profile.xml" value="0.15425531914893617" />
-        <entry key="app/src/main/res/layout/activity_get_fire_storage_image.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20108695652173914" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.22010869565217392" />
-        <entry key="app/src/main/res/layout/activity_search.xml" value="0.2109375" />
-        <entry key="app/src/main/res/layout/dessert_list.xml" value="0.2109375" />
-        <entry key="app/src/main/res/layout/intro_dessert_recycler.xml" value="0.24048913043478262" />
-        <entry key="app/src/main/res/layout/popular_list.xml" value="0.24048913043478262" />
       </map>
     </option>
   </component>

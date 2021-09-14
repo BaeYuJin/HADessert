@@ -7,6 +7,8 @@ import android.content.Intent
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.had.databinding.ActivityMainBinding
@@ -27,6 +29,8 @@ import com.google.firebase.storage.ktx.storage
 //import com.example.had.databinding.ActivitySetNowLocationBinding
 import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapPoint
+import java.security.MessageDigest
+import kotlin.system.exitProcess
 
 //import com.example.had.databinding.ActivitySetNowLocationBinding
 //import java.io.File
@@ -67,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         binding.textView8.setOnClickListener {
             startActivity(Intent(this, IntroDessertActivity::class.java))
         }
+
 
         val secondIntent = intent
         var tv: TextView = binding.mainTextView
