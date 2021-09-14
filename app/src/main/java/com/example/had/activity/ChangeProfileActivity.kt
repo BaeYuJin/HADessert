@@ -149,7 +149,7 @@ class ChangeProfileActivity : AppCompatActivity() {
 
     private fun getFirebaseImage(){
         val storageRef = storage.reference
-        val imageRef = storageRef.child("profileImages/${user?.uid}.jpg")
+        val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
         val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
         displayImageRef(imageRefUrl, binding.NewProfileImage)
     }
