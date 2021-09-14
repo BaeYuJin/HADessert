@@ -20,7 +20,7 @@ class StarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.star_list)
+        setContentView(R.layout.activity_main)
 
         initRecycler()
 
