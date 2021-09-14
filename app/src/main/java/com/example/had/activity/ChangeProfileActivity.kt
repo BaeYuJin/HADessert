@@ -17,6 +17,20 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 import java.io.File
+import android.widget.Toast
+
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnFailureListener
+
+import com.google.android.gms.tasks.OnSuccessListener
+
+import com.google.firebase.storage.StorageReference
+
+import com.google.firebase.storage.FirebaseStorage
+
+
+
 
 
 class ChangeProfileActivity : AppCompatActivity() {
@@ -30,7 +44,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChangeProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //getFirebaseImage()
+        getFirebaseImage()
         user?.let {
             // Name, email address, and profile photo Url
             val name = user.displayName
@@ -132,13 +146,17 @@ class ChangeProfileActivity : AppCompatActivity() {
     }
 
     private fun getFirebaseImage(){
-        //val storageRef = storage.reference
-        val storageReference = Firebase.storage.reference
-
-        val pathReference = storageRef.child("profileImages/${user?.uid}.jpg")
-        val gsReference = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
-
-        Glide.with(this).load(gsReference).into(binding.imageView11)
+        val storage = FirebaseStorage.getInstance("\"gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg\"")
+        val storageRef = storage.reference
+        storageRef.child("profileImages/${user?.uid}.jpg").downloadUrl.addOnSuccessListener { uri -> //이미지 로드 성공시
+            Glide.with(applicationContext)
+                .load(uri)
+                .into(
+                    binding.NewProfileImage
+                )
+        }.addOnFailureListener { //이미지 로드 실패시
+            Toast.makeText(applicationContext, "실패", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
