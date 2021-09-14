@@ -28,13 +28,13 @@ class RecyclerAdapterStar(private val context: Context) : RecyclerView.Adapter<R
         private val shopImg: ImageView = itemView.findViewById(R.id.star_imageView)
         private val name: TextView = itemView.findViewById(R.id.shopname2)
         private val address: TextView = itemView.findViewById(R.id.distance2)
-        private val tel: TextView = itemView.findViewById(R.id.starscore2)
+        private val phone: TextView = itemView.findViewById(R.id.starscore2)
 
         fun bind(item: StarData) {
             Glide.with(itemView).load(item.img).into(shopImg)
-            name.text = item.shop
+            name.text = item.name
             address.text = item.address
-            tel.text = item.tel
+            phone.text = item.phone
         }
     }
 }

@@ -24,6 +24,8 @@ import com.example.had.R
 import com.example.had.adapter.RecyclerAdapterStar
 import com.example.had.dataclass.StarData
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 //import com.example.had.databinding.ActivitySetNowLocationBinding
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     private val storage = Firebase.storage
     private val user = Firebase.auth.currentUser
     private val storageRef = storage.reference
+    private val db = Firebase.firestore
     private val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
     private val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
 
@@ -196,9 +199,27 @@ class MainActivity : AppCompatActivity() {
     private fun initRecycler() {
         recyclerAdapterStar = RecyclerAdapterStar(this)
         binding.starRv.adapter = recyclerAdapterStar
+        var shopName : String =""
+        var address : String =""
+        var phone : String =""
+
+        if (user != null) {
+            db.collection(user.uid).document("성북동빵공장").get().addOnSuccessListener { documentSnapshot ->
+                val star = documentSnapshot.toObject<StarData>()
+                if (star != null) {
+                    shopName = star.name
+                    address = star.address
+                    phone = star.phone
+                    Log.d("test", star.name)
+                    Log.d("test", star.address)
+                    Log.d("test", star.phone)
+                }
+            }
+        }
 
         starlist.apply {
-            add(StarData(img = R.drawable.bread, shop = "이름", address = "주소", tel = "010"))
+            //add(StarData(img = R.drawable.bread, shop = "이름", address = "주소", tel = "010"))
+            add(StarData(img = R.drawable.bread, name = "${shopName}", address = address , phone = phone))
 
             recyclerAdapterStar.starlist = starlist
             recyclerAdapterStar.notifyDataSetChanged()

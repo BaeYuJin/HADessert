@@ -62,7 +62,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val DURATION : Long = 800
+        private const val DURATION : Long = 4000
     }
 
 
