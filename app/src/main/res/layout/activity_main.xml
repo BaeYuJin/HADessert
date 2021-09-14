@@ -288,9 +288,17 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/starRv"
+                    android:layout_width="320dp"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="12dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/jjimPlace_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/jjimPlace_textView"
+                    tools:listitem="@layout/star_list" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
