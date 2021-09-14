@@ -30,7 +30,6 @@ import net.daum.mf.map.api.MapPOIItem
 //import com.example.had.databinding.ActivitySetNowLocationBinding
 import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapPoint
-import java.io.File
 import kotlin.system.exitProcess
 //import com.example.had.databinding.ActivitySetNowLocationBinding
 //import java.io.File
