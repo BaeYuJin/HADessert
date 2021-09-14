@@ -26,13 +26,15 @@ import androidx.annotation.NonNull
 import com.google.android.gms.tasks.OnFailureListener
 
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 
 import com.google.firebase.storage.StorageReference
 
 import com.google.firebase.storage.FirebaseStorage
-
-
-
 
 
 class ChangeProfileActivity : AppCompatActivity() {
@@ -42,11 +44,15 @@ class ChangeProfileActivity : AppCompatActivity() {
     val user = Firebase.auth.currentUser
     val storageRef = storage.reference
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChangeProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getFirebaseImage()
+        val database = Firebase.database
+        val reference = database.getReference("Users")
+
         user?.let {
             // Name, email address, and profile photo Url
             val name = user.displayName
@@ -61,8 +67,18 @@ class ChangeProfileActivity : AppCompatActivity() {
             // FirebaseUser.getToken() instead.
             val uid = user.uid
         }
-
-
+        if (user != null) {
+            reference.child(user.uid).child("name").addValueEventListener(object :
+                ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val name = dataSnapshot.value.toString()
+                    binding.NewNickname.setText(name)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                }
+            })
+        }
 
         binding.getImageB.setOnClickListener { // 이미지 불러오기
 
@@ -95,6 +111,9 @@ class ChangeProfileActivity : AppCompatActivity() {
         }
 
         binding.saveChangeProfileB.setOnClickListener{
+            if (user != null) {
+                reference.child(user.uid).child("name").setValue(binding.NewNickname.text.toString())
+            }
             uploadProfileImage()
             finish()
         }
