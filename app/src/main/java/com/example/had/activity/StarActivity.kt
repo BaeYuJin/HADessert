@@ -2,15 +2,9 @@ package com.example.had.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.had.R
-import com.example.had.adapter.IntroDessertAdapter
 import com.example.had.adapter.RecyclerAdapterStar
-import com.example.had.databinding.ActivityIntroDessertBinding
 import com.example.had.databinding.ActivityMainBinding
-import com.example.had.dataclass.DataStar
-import com.example.had.dataclass.IntroDessertData
 
 class StarActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -22,7 +16,7 @@ class StarActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
 
-        initRecycler()
+        //initRecycler()
 
        /* val gridLayoutManager = GridLayoutManager(applicationContext, 2)
         gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -34,9 +28,9 @@ class StarActivity : AppCompatActivity() {
         binding.starRv.adapter = recyclerAdapterStar
 
         starlist.apply {
-            add(DataStar(null, "이름", "주소","010"))
+            //add(DataStar(null, "이름", "주소","010"))
 
-            recyclerAdapterStar.starlist = starlist
+            //recyclerAdapterStar.starlist = starlist
             recyclerAdapterStar.notifyDataSetChanged()
         }
     }
