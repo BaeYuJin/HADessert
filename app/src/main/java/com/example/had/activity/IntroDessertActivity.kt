@@ -36,6 +36,9 @@ class IntroDessertActivity : AppCompatActivity() {
             add(IntroDessertData(img = R.drawable.financier, name = "휘낭시에"))
             add(IntroDessertData(img = R.drawable.palmiercarre, name = "빨미까레"))
             add(IntroDessertData(img = R.drawable.eggtart, name = "에그타르트"))
+            add(IntroDessertData(img = R.drawable.skon, name = "스콘"))
+            add(IntroDessertData(img = R.drawable.madeleine, name = "마들렌"))
+            add(IntroDessertData(img = R.drawable.montblanc, name = "몽블랑"))
 
             introDessertAdapter.datas = datas
             introDessertAdapter.notifyDataSetChanged()
