@@ -163,13 +163,5 @@ class ChangeProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun downloadFirebaseImage(imageRef: StorageReference?, view: ImageView){
-        val localFile = File.createTempFile("images", "jpg")
 
-        imageRef?.getFile(localFile)?.addOnSuccessListener {
-            // Local temp file has been created
-        }?.addOnFailureListener {
-            // Handle any errors
-        }
-    }
 }
