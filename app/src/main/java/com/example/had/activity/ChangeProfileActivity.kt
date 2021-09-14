@@ -2,12 +2,14 @@ package com.example.had.activity
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.ImageView
 import com.example.had.databinding.ActivityChangeProfileBinding
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import com.bumptech.glide.Glide
@@ -146,17 +148,18 @@ class ChangeProfileActivity : AppCompatActivity() {
     }
 
     private fun getFirebaseImage(){
-        val storage = FirebaseStorage.getInstance("\"gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg\"")
         val storageRef = storage.reference
-        storageRef.child("profileImages/${user?.uid}.jpg").downloadUrl.addOnSuccessListener { uri -> //이미지 로드 성공시
-            Glide.with(applicationContext)
-                .load(uri)
-                .into(
-                    binding.NewProfileImage
-                )
-        }.addOnFailureListener { //이미지 로드 실패시
-            Toast.makeText(applicationContext, "실패", Toast.LENGTH_SHORT).show()
-        }
+        val imageRef = FirebaseStorage.getInstance("profileImages/${user?.uid}.jpg")
+        val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
+        displayImageRef(imageRefUrl, binding.NewProfileImage)
     }
 
+    private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
+        imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+            view.setImageBitmap(bmp)
+        }?.addOnFailureListener {
+            // Failed to download the image
+        }
+    }
 }
