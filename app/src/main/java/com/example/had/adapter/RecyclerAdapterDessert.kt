@@ -14,7 +14,6 @@ import com.google.firebase.ktx.Firebase
 
 
 class RecyclerAdapterDessert(private val items: MutableList<DataDessert>) : RecyclerView.Adapter<RecyclerAdapterDessert.ViewHolder>() {
-    //val db = Firebase.firestore
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = DessertListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -35,6 +34,7 @@ class RecyclerAdapterDessert(private val items: MutableList<DataDessert>) : Recy
     override fun getItemCount(): Int = items.size
 
     class ViewHolder(private val binding: DessertListBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val TAG = "RecyclerAdapterDessert"
         private val db = Firebase.firestore
         val user = Firebase.auth.currentUser
 
@@ -57,8 +57,18 @@ class RecyclerAdapterDessert(private val items: MutableList<DataDessert>) : Recy
             )
 
             if (user != null) {
-                if(db.collection(user.uid).document("${binding.shopname.text}").get() == listDessert)
-                    binding.heart.setVisibility(View.VISIBLE)
+                db.collection(user.uid).document("${binding.shopname.text}").get()
+                    .addOnSuccessListener { document ->
+                        if (document != null) {
+                            Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                            binding.heart.setVisibility(View.VISIBLE)
+                        } else {
+                            Log.d(TAG, "No such document")
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.d(TAG, "get failed with ", exception)
+                    }
             }
             /*if (user != null) {
                 Log.d("test", "${db.collection(user.uid).document("${binding.shopname.text}").get()}")
