@@ -132,7 +132,9 @@ class SignupActivity : AppCompatActivity() {
         //firebase에 사진 업로드
         //val storageRef = storage.reference
         val profileImageRef = storageRef.child("profileImages/${user?.uid}.jpg")
-        val bitmap = (R.drawable.profile_image as BitmapDrawable).bitmap
+        val drawable = getDrawable(R.drawable.profile_image)
+        val bitmapDrawable = drawable as BitmapDrawable
+        val bitmap = bitmapDrawable.bitmap
         val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val data = baos.toByteArray()
