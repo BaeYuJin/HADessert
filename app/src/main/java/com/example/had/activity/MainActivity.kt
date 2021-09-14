@@ -123,6 +123,7 @@ class MainActivity : AppCompatActivity() {
 
         imageRef?.getFile(localFile)?.addOnSuccessListener {
             // Local temp file has been created
+            // 추
         }?.addOnFailureListener {
             // Handle any errors
         }
