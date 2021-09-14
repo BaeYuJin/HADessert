@@ -50,12 +50,6 @@
             android:textColor="#EC6D61"
             android:textSize="24sp" />
 
-        <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars" />
-
     </LinearLayout>
 
     <TextView
@@ -65,7 +59,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/im_hyemin_bold"
-        android:text="사용자 이름"
+        android:text="loading.."
         android:textColor="@color/darkgray"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/profileImage"

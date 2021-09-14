@@ -15,10 +15,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.example.had.FireStorageViewModel
 import com.example.had.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -30,8 +32,10 @@ import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapPoint
 import java.io.File
 import kotlin.system.exitProcess
-
+//import com.example.had.databinding.ActivitySetNowLocationBinding
+import java.io.File
 //import com.naver.maps.map.NaverMapSdk
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -44,12 +48,13 @@ class MainActivity : AppCompatActivity() {
 
     val PERMISSIONS_REQUEST_CODE = 100
     var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
+    private val viewModel: FireStorageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        downloadFirebaseImage(imageRefUrl)
+        viewModel.setImage(binding.profileImage)
 
         // 검색 창 클릭 시 액티비티 이동
         binding.mainSearchView.setOnClickListener {
@@ -172,14 +177,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun downloadFirebaseImage(imageRef: StorageReference?){
-        val localFile = File.createTempFile("images", "jpg")
-
-        imageRef?.getFile(localFile)?.addOnSuccessListener {
-            // Local temp file has been created
-            // 추
-        }?.addOnFailureListener {
-            // Handle any errors
-        }
+    override fun onResume() {
+        super.onResume()
+        viewModel.setImage(binding.profileImage)
     }
+
+
 }

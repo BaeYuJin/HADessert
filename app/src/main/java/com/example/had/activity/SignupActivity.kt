@@ -1,24 +1,37 @@
 package com.example.had.activity
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.had.FireStorageViewModel
 import com.example.had.R
 import com.example.had.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-
+import com.google.firebase.storage.ktx.storage
+import java.io.ByteArrayOutputStream
 
 class SignupActivity : AppCompatActivity() {
     private val TAG = "SignUp"
     private lateinit var auth: FirebaseAuth
+    private val TAGn = this.javaClass.simpleName
+    private val storage = Firebase.storage
+    val user = Firebase.auth.currentUser
+    val storageRef = storage.reference
+
+    private val viewModel: FireStorageViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySignupBinding.inflate(layoutInflater)
@@ -101,6 +114,8 @@ class SignupActivity : AppCompatActivity() {
 
                     Toast.makeText(baseContext, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
 
+                    uploadProfileImage()
+
                     val intent = Intent(this@SignupActivity, LoginActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -111,5 +126,33 @@ class SignupActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun uploadProfileImage() {
+        //firebase에 사진 업로드
+        //val storageRef = storage.reference
+        val profileImageRef = storageRef.child("profileImages/${user?.uid}.jpg")
+        val bitmap = (R.drawable.profile_image as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        val profileUpdates = userProfileChangeRequest {
+            displayName = "Jane Q. User"
+            if (user != null) {
+                photoUri = Uri.parse("profileImages/${user.uid}.jpg")
+            }
+        }
+        user!!.updateProfile(profileUpdates)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAGn, "User profile updated.")
+                }
+            }
+
+        var uploadTask = profileImageRef.putBytes(data)
+        uploadTask.addOnFailureListener {
+
+        }.addOnSuccessListener { taskSnapshot -> }
     }
 }

@@ -20,19 +20,24 @@ import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 import java.io.File
 import android.widget.Toast
+import androidx.activity.viewModels
 
 import androidx.annotation.NonNull
+import com.example.had.FireStorageViewModel
+import com.example.had.R
 
 import com.google.android.gms.tasks.OnFailureListener
 
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 
 import com.google.firebase.storage.StorageReference
 
 import com.google.firebase.storage.FirebaseStorage
-
-
-
 
 
 class ChangeProfileActivity : AppCompatActivity() {
@@ -42,11 +47,18 @@ class ChangeProfileActivity : AppCompatActivity() {
     val user = Firebase.auth.currentUser
     val storageRef = storage.reference
 
+
+    private val viewModel: FireStorageViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChangeProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getFirebaseImage()
+        viewModel.setImage(binding.NewProfileImage)
+        //getFirebaseImage()
+        val database = Firebase.database
+        val reference = database.getReference("Users")
+
         user?.let {
             // Name, email address, and profile photo Url
             val name = user.displayName
@@ -61,8 +73,18 @@ class ChangeProfileActivity : AppCompatActivity() {
             // FirebaseUser.getToken() instead.
             val uid = user.uid
         }
-
-
+        if (user != null) {
+            reference.child(user.uid).child("name").addValueEventListener(object :
+                ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val name = dataSnapshot.value.toString()
+                    binding.NewNickname.setText(name)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                }
+            })
+        }
 
         binding.getImageB.setOnClickListener { // 이미지 불러오기
 
@@ -95,6 +117,9 @@ class ChangeProfileActivity : AppCompatActivity() {
         }
 
         binding.saveChangeProfileB.setOnClickListener{
+            if (user != null) {
+                reference.child(user.uid).child("name").setValue(binding.NewNickname.text.toString())
+            }
             uploadProfileImage()
             finish()
         }
@@ -144,23 +169,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         uploadTask.addOnFailureListener {
 
         }.addOnSuccessListener { taskSnapshot -> }
-
-    }
-
-    private fun getFirebaseImage(){
-        val storageRef = storage.reference
-        val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
-        val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
-        displayImageRef(imageRefUrl, binding.NewProfileImage)
-    }
-
-    private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
-        imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
-            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-            view.setImageBitmap(bmp)
-        }?.addOnFailureListener {
-            // Failed to download the image
-        }
+        viewModel.setImage(binding.NewProfileImage)
     }
 
 
