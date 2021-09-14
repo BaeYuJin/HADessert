@@ -25,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
 
         val user = auth.currentUser
         val handler = Handler()
-        if ((user != null ) && (PreferenceUtil.getAutoLogin(this) == "true")) {
+        if ((user != null) && (PreferenceUtil.getAutoLogin(this) == "true")) {
             handler.postDelayed({
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

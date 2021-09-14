@@ -114,5 +114,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.setImage(binding.profileImage)
+    }
+
 
 }

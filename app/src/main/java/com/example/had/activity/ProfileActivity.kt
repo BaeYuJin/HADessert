@@ -37,7 +37,7 @@ class ProfileActivity : AppCompatActivity() {
         val database = Firebase.database
         val reference = database.getReference("Users")
 
-        viewModel.setImage(binding.profileImage)
+
         user?.let {
             // Name, email address, and profile photo Url
             val name = user.displayName
@@ -75,7 +75,7 @@ class ProfileActivity : AppCompatActivity() {
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        viewModel.setImage(binding.profileImage)
         binding.changeProfile.setOnClickListener{
             startActivity(Intent(this, ChangeProfileActivity::class.java))
         }
@@ -98,6 +98,12 @@ class ProfileActivity : AppCompatActivity() {
             view.setImageBitmap(bmp)
         }?.addOnFailureListener {
             // Failed to download the image
-        } }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.setImage(binding.profileImage)
+    }
 
 }
