@@ -6,7 +6,7 @@
     android:layout_height="110dp">
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/star_imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"

@@ -2,12 +2,9 @@ package com.example.had.activity
 
 
 import android.Manifest
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.location.Location
-import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
@@ -18,22 +15,23 @@ import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.had.FireStorageViewModel
 import com.example.had.R
+import com.example.had.adapter.RecyclerAdapterStar
+import com.example.had.dataclass.StarData
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
-import com.google.type.LatLng
-import net.daum.mf.map.api.MapPOIItem
 //import com.example.had.databinding.ActivitySetNowLocationBinding
 import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapPoint
 import java.security.MessageDigest
 import kotlin.system.exitProcess
+
 //import com.example.had.databinding.ActivitySetNowLocationBinding
 //import java.io.File
 //import com.naver.maps.map.NaverMapSdk
@@ -51,6 +49,9 @@ class MainActivity : AppCompatActivity() {
     val PERMISSIONS_REQUEST_CODE = 100
     var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
     private val viewModel: FireStorageViewModel by viewModels()
+
+    private val starlist = mutableListOf<StarData>()
+    private lateinit var recyclerAdapterStar: RecyclerAdapterStar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -183,6 +184,24 @@ class MainActivity : AppCompatActivity() {
         builder2.setNeutralButton("확인",{dialogInterface: DialogInterface?, i:Int-> })
         binding.imageView10.setOnClickListener {
             builder2.show()
+        }
+
+        initRecycler()
+
+        val gridLayoutManager = GridLayoutManager(applicationContext, 1)
+        gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        binding.starRv.layoutManager = gridLayoutManager
+    }
+
+    private fun initRecycler() {
+        recyclerAdapterStar = RecyclerAdapterStar(this)
+        binding.starRv.adapter = recyclerAdapterStar
+
+        starlist.apply {
+            add(StarData(img = R.drawable.bread, shop = "이름", address = "주소", tel = "010"))
+
+            recyclerAdapterStar.starlist = starlist
+            recyclerAdapterStar.notifyDataSetChanged()
         }
     }
 
