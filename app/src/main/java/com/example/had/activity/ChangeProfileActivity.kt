@@ -20,8 +20,11 @@ import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 import java.io.File
 import android.widget.Toast
+import androidx.activity.viewModels
 
 import androidx.annotation.NonNull
+import com.example.had.FireStorageViewModel
+import com.example.had.R
 
 import com.google.android.gms.tasks.OnFailureListener
 
@@ -45,11 +48,14 @@ class ChangeProfileActivity : AppCompatActivity() {
     val storageRef = storage.reference
 
 
+    private val viewModel: FireStorageViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChangeProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getFirebaseImage()
+        viewModel.setImage(binding.NewProfileImage)
+        //getFirebaseImage()
         val database = Firebase.database
         val reference = database.getReference("Users")
 
@@ -163,7 +169,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         uploadTask.addOnFailureListener {
 
         }.addOnSuccessListener { taskSnapshot -> }
-
+        viewModel.getImageRef()
     }
 
     private fun getFirebaseImage(){

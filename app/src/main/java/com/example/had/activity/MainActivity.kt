@@ -10,8 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
+import com.example.had.FireStorageViewModel
 import com.example.had.fragment.HotPlaceFragment
 import com.example.had.R
 import com.google.firebase.auth.ktx.auth
@@ -35,13 +37,15 @@ class MainActivity : AppCompatActivity() {
     private val storageRef = storage.reference
     private val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
     private val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
-
+    private val viewModel: FireStorageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         downloadFirebaseImage(imageRefUrl)
+
+        viewModel.setImage(binding.profileImage)
 
         // 검색 창 클릭 시 액티비티 이동
         binding.mainSearchView.setOnClickListener {
@@ -123,7 +127,7 @@ class MainActivity : AppCompatActivity() {
 
         imageRef?.getFile(localFile)?.addOnSuccessListener {
             // Local temp file has been created
-            // 추
+            //R.drawable.profile. = localFile
         }?.addOnFailureListener {
             // Handle any errors
         }
