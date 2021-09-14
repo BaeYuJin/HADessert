@@ -20,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
     private var emailPattern = "[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\\.[a-zA-Z]{2,3}"
     private lateinit var auth: FirebaseAuth
     var mBackWait:Long = 0
-    private val viewModel: FireStorageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +64,6 @@ class LoginActivity : AppCompatActivity() {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail:success")
                                 val user = auth.currentUser
-                                viewModel.getImageRef()
                                 startActivity(Intent(this, MainActivity::class.java))
                                 //binding.loginEmailEditText.setBackgroundColor(R.drawable.white_edittext)
                             } else {

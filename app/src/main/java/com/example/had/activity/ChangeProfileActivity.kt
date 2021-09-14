@@ -169,23 +169,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         uploadTask.addOnFailureListener {
 
         }.addOnSuccessListener { taskSnapshot -> }
-        viewModel.getImageRef()
-    }
-
-    private fun getFirebaseImage(){
-        val storageRef = storage.reference
-        val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
-        val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
-        displayImageRef(imageRefUrl, binding.NewProfileImage)
-    }
-
-    private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
-        imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
-            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-            view.setImageBitmap(bmp)
-        }?.addOnFailureListener {
-            // Failed to download the image
-        }
+        viewModel.setImage(binding.NewProfileImage)
     }
 
 
