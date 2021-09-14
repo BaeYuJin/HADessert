@@ -2,12 +2,14 @@ package com.example.had.activity
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.ImageView
 import com.example.had.databinding.ActivityChangeProfileBinding
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import com.bumptech.glide.Glide
@@ -17,6 +19,20 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 import java.io.File
+import android.widget.Toast
+
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnFailureListener
+
+import com.google.android.gms.tasks.OnSuccessListener
+
+import com.google.firebase.storage.StorageReference
+
+import com.google.firebase.storage.FirebaseStorage
+
+
+
 
 
 class ChangeProfileActivity : AppCompatActivity() {
@@ -30,7 +46,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChangeProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //getFirebaseImage()
+        getFirebaseImage()
         user?.let {
             // Name, email address, and profile photo Url
             val name = user.displayName
@@ -132,13 +148,18 @@ class ChangeProfileActivity : AppCompatActivity() {
     }
 
     private fun getFirebaseImage(){
-        //val storageRef = storage.reference
-        val storageReference = Firebase.storage.reference
-
-        val pathReference = storageRef.child("profileImages/${user?.uid}.jpg")
-        val gsReference = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
-
-        Glide.with(this).load(gsReference).into(binding.imageView11)
+        val storageRef = storage.reference
+        val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
+        val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
+        displayImageRef(imageRefUrl, binding.NewProfileImage)
     }
 
+    private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
+        imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+            view.setImageBitmap(bmp)
+        }?.addOnFailureListener {
+            // Failed to download the image
+        }
+    }
 }
