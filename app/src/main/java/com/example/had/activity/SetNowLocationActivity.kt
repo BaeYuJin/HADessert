@@ -77,6 +77,12 @@ class SetNowLocationActivity() : AppCompatActivity(), OnMapReadyCallback,
         binding.toSetLocationActivityButton.setOnClickListener {
             startActivity(Intent(this, SetLocationActivity::class.java))
         }
+
+        binding.setNowLoationButtonButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("location", getCurrentAddress(currentPosition!!))
+            startActivity(intent)
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -163,6 +169,8 @@ class SetNowLocationActivity() : AppCompatActivity(), OnMapReadyCallback,
                 //현재 위치에 마커 생성하고 이동
                 setCurrentLocation(location, markerTitle, markerSnippet)
                 mCurrentLocatiion = location
+
+                binding.showNowLocationTextView.text = getCurrentAddress(currentPosition!!)
             }
         }
     }
@@ -397,7 +405,7 @@ class SetNowLocationActivity() : AppCompatActivity(), OnMapReadyCallback,
         private val TAG = "googlemap_example"
         private val GPS_ENABLE_REQUEST_CODE = 2001
         private val UPDATE_INTERVAL_MS = 1000 // 1초
-        private val FASTEST_UPDATE_INTERVAL_MS = 60000 // 60초
+        private val FASTEST_UPDATE_INTERVAL_MS = 10000 // 60초
 
         // onRequestPermissionsResult에서 수신된 결과에서 ActivityCompat.requestPermissions를 사용한 퍼미션 요청을 구별하기 위해 사용됩니다.
         private val PERMISSIONS_REQUEST_CODE = 100
