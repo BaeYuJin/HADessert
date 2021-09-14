@@ -51,6 +51,7 @@
         <activity android:name=".activity.FindingIDnPWActivity" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.Search1Activity" />
+        <activity android:name=".activity.StarActivity" />
         <activity android:name=".activity.IntroDessertActivity" />
         <activity android:name=".activity.SetNowLocationActivity" />
 
