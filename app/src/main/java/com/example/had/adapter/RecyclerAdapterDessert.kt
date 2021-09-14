@@ -33,8 +33,8 @@ class RecyclerAdapterDessert(private val items: MutableList<DataDessert>) : Recy
         fun bind(listener: View.OnClickListener, item : DataDessert){
             binding.image1.setImageDrawable(item.img)
             binding.shopname.text = item.name
-            binding.distance.text = item.distance
-            binding.starscore.text = item.star
+            binding.distance.text = item.address
+            binding.starscore.text = item.tel
             //binding.heart.setImageDrawable(item.heart)
             //binding.heartcnt.text = item.heartcnt
 

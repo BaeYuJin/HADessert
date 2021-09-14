@@ -57,8 +57,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dessert_rv"
         android:layout_width="350dp"
-        android:layout_height="510dp"
-        android:visibility="invisible"
+        android:layout_height="600dp"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
