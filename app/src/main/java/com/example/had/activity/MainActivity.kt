@@ -82,14 +82,25 @@ class MainActivity : AppCompatActivity() {
             else
                 locaBuilder.setMessage(tv.text)
             locaBuilder.setNeutralButton("확인") { _: DialogInterface?, _: Int -> }
-            locaBuilder.setIcon(R.drawable.appicon)
+            locaBuilder.setIcon(R.drawable.mainicon)
             locaBuilder.show()
         }
 
         val mapView = MapView(this)
         val mapViewContainer = binding.mapView as ViewGroup
-        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.53737528, 127.0055763310), true)
+        val locationIntent = intent
+
+        val nowLatitude = locationIntent.getDoubleExtra("latitude", 0.0)
+        val nowLongitude = locationIntent.getDoubleExtra("longitude", 0.0)
+
+        val uNowPosition = MapPoint.mapPointWithGeoCoord(37.53737528, 127.0055763310)
+        mapView.setMapCenterPoint(uNowPosition, true)
         mapViewContainer.addView(mapView)
+
+        /*val mapView = MapView(this)
+        val mapViewContainer = binding.mapView as ViewGroup
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.53737528, 127.0055763310), true)
+        mapViewContainer.addView(mapView)*/
 
         /*
         NaverMapSdk.getInstance(this).client =
