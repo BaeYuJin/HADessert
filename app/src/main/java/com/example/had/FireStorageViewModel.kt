@@ -19,15 +19,13 @@ class FireStorageViewModel : ViewModel() {
     val storageRef = storage.reference
     val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
     val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
-    var result = MutableLiveData<Bitmap>()
 
     fun setImage(view: ImageView){
         imageRefUrl?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
             val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-            result.value = bmp
+            view?.setImageBitmap(bmp)
         }?.addOnFailureListener {
             // Failed to download the image
-            view?.setImageBitmap(result.value)
         }
     }
 }

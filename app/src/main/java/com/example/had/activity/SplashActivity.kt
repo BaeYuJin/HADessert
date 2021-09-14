@@ -29,7 +29,6 @@ class SplashActivity : AppCompatActivity() {
         if ((user != null ) && (PreferenceUtil.getAutoLogin(this) == "true")) {
             handler.postDelayed({
                 val intent = Intent(this, MainActivity::class.java)
-                viewModel.getImageRef()
                 startActivity(intent)
                 finish()
             }, DURATION)
