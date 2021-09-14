@@ -15,7 +15,6 @@ import com.google.firebase.ktx.Firebase
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private val viewModel: FireStorageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
