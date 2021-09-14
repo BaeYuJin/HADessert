@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
@@ -13,10 +14,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.example.had.fragment.HotPlaceFragment
 import com.example.had.R
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 //import com.example.had.databinding.ActivitySetNowLocationBinding
 import net.daum.android.map.MapView
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
+import java.io.File
 import org.w3c.dom.Text
 
 //import com.naver.maps.map.NaverMapSdk
@@ -24,11 +30,18 @@ import org.w3c.dom.Text
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var mBackWait:Long = 0
+    private val storage = Firebase.storage
+    private val user = Firebase.auth.currentUser
+    private val storageRef = storage.reference
+    private val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
+    private val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        downloadFirebaseImage(imageRefUrl)
 
         // 검색 창 클릭 시 액티비티 이동
         binding.mainSearchView.setOnClickListener {
@@ -102,6 +115,17 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_LONG).show()
         } else {
             finishAffinity() //액티비티 종료
+        }
+    }
+
+    private fun downloadFirebaseImage(imageRef: StorageReference?){
+        val localFile = File.createTempFile("images", "jpg")
+
+        imageRef?.getFile(localFile)?.addOnSuccessListener {
+            // Local temp file has been created
+            // 추
+        }?.addOnFailureListener {
+            // Handle any errors
         }
     }
 }
