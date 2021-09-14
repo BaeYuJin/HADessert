@@ -7,19 +7,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import com.example.had.databinding.ActivityMainBinding
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import com.example.had.fragment.HotPlaceFragment
 import com.example.had.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+//import com.example.had.databinding.ActivitySetNowLocationBinding
 import net.daum.android.map.MapView
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import java.io.File
+import org.w3c.dom.Text
 
 //import com.naver.maps.map.NaverMapSdk
 
@@ -50,6 +54,24 @@ class MainActivity : AppCompatActivity() {
 
         binding.textView8.setOnClickListener {
             startActivity(Intent(this, IntroDessertActivity::class.java))
+        }
+
+        val secondIntent = intent
+        var tv: TextView = binding.mainTextView
+        tv.text = secondIntent.getStringExtra("location")
+        if (tv.text.isNotEmpty())
+            binding.textView9.isVisible = false
+
+        tv.setOnClickListener {
+            val locaBuilder = AlertDialog.Builder(this)
+            locaBuilder.setTitle("현재 위치")
+            if (tv.text.isEmpty())
+                locaBuilder.setMessage("위치를 설정하세요.")
+            else
+                locaBuilder.setMessage(tv.text)
+            locaBuilder.setNeutralButton("확인") { _: DialogInterface?, _: Int -> }
+            locaBuilder.setIcon(R.drawable.appicon)
+            locaBuilder.show()
         }
 
         /*val mapView = MapView(this)  카카오매배배배배배뱁
