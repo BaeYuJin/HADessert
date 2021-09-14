@@ -19,7 +19,7 @@ class FireStorageViewModel : ViewModel() {
 
     var bmp = BitmapFactory.decodeByteArray(null, 0, 0)
 
-    public fun getImageRef() {
+    fun getImageRef() {
         imageRefUrl?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
             bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
         }?.addOnFailureListener {
