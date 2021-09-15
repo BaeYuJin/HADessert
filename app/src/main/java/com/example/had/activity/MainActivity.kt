@@ -467,7 +467,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         markerOptions.title(markerTitle)
         markerOptions.snippet(markerSnippet)
         markerOptions.draggable(true)
-        currentMarker = mMap!!.addMarker(markerOptions)
+        //currentMarker = mMap!!.addMarker(markerOptions)
         val cameraUpdate = CameraUpdateFactory.newLatLng(currentLatLng)
         mMap!!.moveCamera(cameraUpdate)
     }
@@ -484,7 +484,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         markerOptions.snippet(markerSnippet)
         markerOptions.draggable(true)
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
-        currentMarker = mMap!!.addMarker(markerOptions)
+        //currentMarker = mMap!!.addMarker(markerOptions)
         val cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 15f)
         mMap!!.moveCamera(cameraUpdate)
     }
