@@ -108,7 +108,7 @@
                 <View
                     android:id="@+id/hotPlace_view"
                     android:layout_width="360dp"
-                    android:layout_height="300dp"
+                    android:layout_height="360dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/layout5"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -129,6 +129,21 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/hotPlace_view"
                     app:layout_constraintTop_toTopOf="@+id/hotPlace_view" />
+
+                <fragment
+                    android:id="@+id/main_map"
+                    class="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/hotPlace_view"
+                    app:layout_constraintEnd_toEndOf="@+id/hotPlace_view"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/hotPlace_view"
+                    app:layout_constraintTop_toBottomOf="@+id/hotPlace_textView" />
 
                 <View
                     android:id="@+id/jjimPlace_view"
@@ -261,19 +276,7 @@
                     app:layout_constraintStart_toStartOf="@+id/main_textView"
                     app:layout_constraintTop_toTopOf="@+id/main_textView" />
 
-                <TextView
-                    android:id="@+id/mapLocationButton"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/target"
-                    android:text="TextView"
-                    android:visibility="invisible"
-                    app:layout_constraintEnd_toEndOf="@+id/hotPlace_view"
-                    app:layout_constraintTop_toTopOf="@+id/hotPlace_view" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/map_view"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -286,13 +289,13 @@
                     app:layout_constraintStart_toStartOf="@+id/hotPlace_view"
                     app:layout_constraintTop_toBottomOf="@+id/hotPlace_textView">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/starRv"
                     android:layout_width="320dp"
                     android:layout_height="240dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="@+id/jjimPlace_textView"
                     app:layout_constraintTop_toBottomOf="@+id/jjimPlace_textView"
                     tools:listitem="@layout/star_list" />
