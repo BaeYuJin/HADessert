@@ -32,7 +32,7 @@ class Search1Activity : AppCompatActivity() {
         binding2 = ActivitySearchBinding.inflate(layoutInflater)
         binding3 = RecentListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getlistRecent(list2) // 이 친구 안되면 그냥 주석처리해주세욥
+        //getlistRecent(list2) // 이 친구 안되면 그냥 주석처리해주세욥
 
         var intent = Intent(this, SearchActivity::class.java)
 
