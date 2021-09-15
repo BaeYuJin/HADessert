@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -51,7 +51,6 @@
         <activity android:name=".activity.FindingIDnPWActivity" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.Search1Activity" />
-        <activity android:name=".activity.StarActivity" />
         <activity android:name=".activity.IntroDessertActivity" />
         <activity android:name=".activity.SetNowLocationActivity" />
 
