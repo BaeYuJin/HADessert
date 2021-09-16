@@ -1,9 +1,6 @@
 package com.example.had.activity
 
-//import com.example.had.databinding.ActivitySetNowLocationBinding
-
 import android.Manifest
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
@@ -16,235 +13,79 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.had.FireStorageViewModel
-import com.example.had.activity.SetNowLocationActivity.Companion.FASTEST_UPDATE_INTERVAL_MS
-import com.example.had.adapter.RecyclerAdapterStar
-import com.example.had.databinding.ActivityMainBinding
-import com.example.had.dataclass.StarData
+import com.example.had.databinding.ActivityDessertPlaceBinding
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
-import noman.googleplaces.*
 import java.io.IOException
+import java.lang.IllegalArgumentException
 import java.util.*
-import kotlin.collections.ArrayList
 
+class DessertPlaceActivity() : AppCompatActivity(), OnMapReadyCallback,
+    OnRequestPermissionsResultCallback {
 
-//import com.example.had.databinding.ActivitySetNowLocationBinding
-//import java.io.File
-//import com.naver.maps.map.NaverMapSdk
+    private lateinit var binding: ActivityDessertPlaceBinding
 
-
-class MainActivity : AppCompatActivity() , OnMapReadyCallback,
-    ActivityCompat.OnRequestPermissionsResultCallback,
-    PlacesListener {
-
-    private lateinit var binding: ActivityMainBinding
-
-    var mBackWait:Long = 0
-    private val storage = Firebase.storage
-    private val user = Firebase.auth.currentUser
-    private val storageRef = storage.reference
-    private val db = Firebase.firestore
-    private val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
-    private val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
-    private val viewModel: FireStorageViewModel by viewModels()
-
-    private val starlist = mutableListOf<StarData>()
-    private lateinit var recyclerAdapterStar: RecyclerAdapterStar
-
-    private var mMap: GoogleMap? = null
+    private var dessertMap: GoogleMap? = null
     private var currentMarker: Marker? = null
     var needRequest = false
+
+    // 앱을 실행하기 위해 필요한 퍼미션을 정의합니다.
     var REQUIRED_PERMISSIONS = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION
-    )
-
-    var mCurrentLocation: Location? = null
+    ) // 외부 저장소
+    var mCurrentLocatiion: Location? = null
     var currentPosition: LatLng? = null
-
-
     private var mFusedLocationClient: FusedLocationProviderClient? = null
     private var locationRequest: LocationRequest? = null
     private var location: Location? = null
+    private var mLayout // Snackbar 사용하기 위해서는 View가 필요합니다.
+            : View? = null
 
-    private var mLayout: View? = null
-
-    var previous_marker : List<Marker> = ArrayList()
-
+    // (참고로 Toast에서는 Context가 필요했습니다.)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityDessertPlaceBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.setImage(binding.profileImage)
-
-        // 검색 창 클릭 시 액티비티 이동
-        binding.mainSearchView.setOnClickListener {
-            startActivity(Intent(this, Search1Activity::class.java))
-        }
-
-        binding.profileImage.setOnClickListener{
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
-
-        binding.textView8.setOnClickListener {
-            startActivity(Intent(this, IntroDessertActivity::class.java))
-        }
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
             WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
         )
-
-        mLayout = binding.root
+        mLayout = findViewById(com.example.had.R.id.dessert_place)
         locationRequest = LocationRequest()
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
             .setInterval(UPDATE_INTERVAL_MS.toLong())
             .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS.toLong())
-        val locationBuilder = LocationSettingsRequest.Builder()
-        locationBuilder.addLocationRequest(locationRequest)
+        val builder = LocationSettingsRequest.Builder()
+        builder.addLocationRequest(locationRequest)
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         val mapFragment = supportFragmentManager
-            .findFragmentById(com.example.had.R.id.main_map) as SupportMapFragment?
+            .findFragmentById(com.example.had.R.id.dessert_place_map) as SupportMapFragment?
         mapFragment!!.getMapAsync(this)
-
-        previous_marker = ArrayList()
-        //val textView: TextView = binding.hotPlaceTextView
-        //textView.setOnClickListener { showPlaceInformation(currentPosition!!) }
-
-        val secondIntent = intent
-        var tv: TextView = binding.mainTextView
-        tv.text = secondIntent.getStringExtra("location")
-        if (tv.text.isNotEmpty())
-            binding.textView9.isVisible = false
-
-        tv.setOnClickListener {
-            val locaBuilder = AlertDialog.Builder(this)
-            locaBuilder.setTitle("현재 위치")
-            if (tv.text.isEmpty())
-                locaBuilder.setMessage("위치를 설정하세요.")
-            else
-                locaBuilder.setMessage(tv.text)
-            locaBuilder.setNeutralButton("확인") { _: DialogInterface?, _: Int -> }
-            locaBuilder.setIcon(com.example.had.R.drawable.mainicon)
-            locaBuilder.show()
-        }
-
-        binding.setLocationTextView.setOnClickListener {
-            startActivity(Intent(this, SetLocationActivity::class.java))
-        }
-
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("마카롱")
-        builder.setMessage("마카롱(macaron)은 작고 동그란 모양의 머랭 크러스트(meringue crust) 사이에 잼, 가나슈(ganache), 버터크림 등의 필링(filling)을 채워 만든 프랑스 쿠키이다.")
-        builder.setNeutralButton("확인",{dialogInterface: DialogInterface?, i:Int-> })
-        binding.imageView9.setOnClickListener {
-            builder.show()
-        }
-        val builder2 = AlertDialog.Builder(this)
-        builder2.setTitle("다쿠아즈")
-        builder2.setMessage("다쿠아즈(Dacquoise)는 프랑스 누벨아키텐 레지옹(Région) 랑드 데파르트망(Département) 닥스 지방에 전해 내려오는 겉이 바삭하고 속이 부드럽고 폭신한 과자이다.")
-        builder2.setNeutralButton("확인",{dialogInterface: DialogInterface?, i:Int-> })
-        binding.imageView10.setOnClickListener {
-            builder2.show()
-        }
-
-        initRecycler()
-
-        val gridLayoutManager = GridLayoutManager(applicationContext, 1)
-        gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        binding.starRv.layoutManager = gridLayoutManager
-    }
-
-    private fun initRecycler() {
-        recyclerAdapterStar = RecyclerAdapterStar(this)
-        binding.starRv.adapter = recyclerAdapterStar
-
-        if (user != null) {
-            db.collection(user.uid).document("성북동빵공장").get().addOnSuccessListener { documentSnapshot ->
-                var star = documentSnapshot.toObject<StarData>()
-                if (star != null) {
-                    Log.d("test", star.name)
-                    Log.d("test", star.address)
-                    Log.d("test", star.phone)
-
-                    starlist.apply {
-                        add(StarData(img = com.example.had.R.drawable.cake, name = star.name , address = star.address , phone = star.phone))
-                        recyclerAdapterStar.starlist = starlist
-                        recyclerAdapterStar.notifyDataSetChanged()
-                    }
-                }
-            }
-            db.collection(user.uid).document("블랑제메종북악").get().addOnSuccessListener { documentSnapshot ->
-                var star2 = documentSnapshot.toObject<StarData>()
-                if (star2 != null) {
-                    Log.d("test", star2.name)
-                    Log.d("test", star2.address)
-                    Log.d("test", star2.phone)
-
-                    starlist.apply {
-                        add(StarData(img = com.example.had.R.drawable.cake, name = star2.name , address = star2.address , phone = star2.phone))
-                        recyclerAdapterStar.starlist = starlist
-                        recyclerAdapterStar.notifyDataSetChanged()
-                    }
-                }
-            }
-            db.collection(user.uid).document("수연산방").get().addOnSuccessListener { documentSnapshot ->
-                var star3 = documentSnapshot.toObject<StarData>()
-                if (star3 != null) {
-                    Log.d("test", star3.name)
-                    Log.d("test", star3.address)
-                    Log.d("test", star3.phone)
-
-                    starlist.apply {
-                        add(StarData(img = com.example.had.R.drawable.bread, name = star3.name , address = star3.address , phone = star3.phone))
-                        recyclerAdapterStar.starlist = starlist
-                        recyclerAdapterStar.notifyDataSetChanged()
-                    }
-                }
-            }
-            db.collection(user.uid).document("해로커피").get().addOnSuccessListener { documentSnapshot ->
-                var star4 = documentSnapshot.toObject<StarData>()
-                if (star4 != null) {
-                    Log.d("test", star4.name)
-                    Log.d("test", star4.address)
-                    Log.d("test", star4.phone)
-
-                    starlist.apply {
-                        add(StarData(img = com.example.had.R.drawable.coffee, name = star4.name , address = star4.address , phone = star4.phone))
-                        recyclerAdapterStar.starlist = starlist
-                        recyclerAdapterStar.notifyDataSetChanged()
-                    }
-                }
-            }
+        
+        binding.toMainActivityButton.setOnClickListener { 
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         Log.d(TAG, "onMapReady :")
-        mMap = googleMap
+        dessertMap = googleMap
 
         //런타임 퍼미션 요청 대화상자나 GPS 활성 요청 대화상자 보이기전에
         //지도의 초기위치를 서울로 이동
@@ -297,17 +138,15 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
                 )
             }
         }
-        mMap!!.uiSettings.isMyLocationButtonEnabled = true
+        dessertMap!!.uiSettings.isMyLocationButtonEnabled = true
         // 현재 오동작을 해서 주석처리
 
         //mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-        mMap!!.setOnMapClickListener {
+        dessertMap!!.setOnMapClickListener {
             Log.d(
                 TAG,
                 "onMapClick :"
             )
-            //currentPosition?.let { it1 -> showPlaceInformation(it1) }
-            startActivity(Intent(this, DessertPlaceActivity::class.java))
         }
     }
 
@@ -327,7 +166,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
 
                 //현재 위치에 마커 생성하고 이동
                 setCurrentLocation(location, markerTitle, markerSnippet)
-                mCurrentLocation = location
+                mCurrentLocatiion = location
             }
         }
     }
@@ -357,11 +196,30 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
                 locationCallback,
                 Looper.myLooper()
             )
-            if (checkPermission()) mMap!!.isMyLocationEnabled = true
+            if (checkPermission()) dessertMap!!.isMyLocationEnabled = true
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart")
+        if (checkPermission()) {
+            Log.d(TAG, "onStart : call mFusedLocationClient.requestLocationUpdates")
+            mFusedLocationClient!!.requestLocationUpdates(locationRequest, locationCallback, null)
+            if (dessertMap != null) dessertMap!!.isMyLocationEnabled = true
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (mFusedLocationClient != null) {
+            Log.d(TAG, "onStop : call stopLocationUpdates")
+            mFusedLocationClient!!.removeLocationUpdates(locationCallback)
         }
     }
 
     fun getCurrentAddress(latlng: LatLng): String {
+
         //지오코더... GPS를 주소로 변환
         val geocoder = Geocoder(this, Locale.getDefault())
         val addresses: List<Address>?
@@ -379,7 +237,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
             Toast.makeText(this, "잘못된 GPS 좌표", Toast.LENGTH_LONG).show()
             return "잘못된 GPS 좌표"
         }
-        if (addresses == null || addresses.isEmpty()) {
+        if (addresses == null || addresses.size == 0) {
             Toast.makeText(this, "주소 미발견", Toast.LENGTH_LONG).show()
             return "주소 미발견"
         } else {
@@ -388,7 +246,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         }
     }
 
-    private fun checkLocationServicesStatus(): Boolean {
+    fun checkLocationServicesStatus(): Boolean {
         val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         return (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
@@ -404,16 +262,18 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         markerOptions.title(markerTitle)
         markerOptions.snippet(markerSnippet)
         markerOptions.draggable(true)
-        //currentMarker = mMap!!.addMarker(markerOptions)
+        currentMarker = dessertMap!!.addMarker(markerOptions)
         val cameraUpdate = CameraUpdateFactory.newLatLng(currentLatLng)
-        mMap!!.moveCamera(cameraUpdate)
+        dessertMap!!.moveCamera(cameraUpdate)
     }
 
-    private fun setDefaultLocation() {
+    fun setDefaultLocation() {
+
+
         //디폴트 위치, Seoul
         val DEFAULT_LOCATION = LatLng(37.56, 126.97)
         val markerTitle = "위치정보 가져올 수 없음"
-        val markerSnippet = "위치 퍼미션과 GPS 활성 여부 확인하세요"
+        val markerSnippet = "위치 퍼미션과 GPS 활성 요부 확인하세요"
         if (currentMarker != null) currentMarker!!.remove()
         val markerOptions = MarkerOptions()
         markerOptions.position(DEFAULT_LOCATION)
@@ -421,9 +281,9 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         markerOptions.snippet(markerSnippet)
         markerOptions.draggable(true)
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
-        //currentMarker = mMap!!.addMarker(markerOptions)
+        currentMarker = dessertMap!!.addMarker(markerOptions)
         val cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 15f)
-        mMap!!.moveCamera(cameraUpdate)
+        dessertMap!!.moveCamera(cameraUpdate)
     }
 
     //여기부터는 런타임 퍼미션 처리을 위한 메소드들
@@ -520,7 +380,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         }
         builder.setNegativeButton(
             "취소"
-        ) { dialog, id -> dialog.cancel() }
+        ) { dialog, _ -> dialog.cancel() }
         builder.create().show()
     }
 
@@ -539,96 +399,13 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         }
     }
 
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart")
-        if (checkPermission()) {
-            Log.d(TAG, "onStart : call mFusedLocationClient.requestLocationUpdates")
-            mFusedLocationClient!!.requestLocationUpdates(locationRequest, locationCallback, null)
-            if (mMap != null) mMap!!.isMyLocationEnabled = true
-        }
-    }
-
-    override fun onStop() {
-        super.onStop()
-        if (mFusedLocationClient != null) {
-            Log.d(TAG, "onStop : call stopLocationUpdates")
-            mFusedLocationClient!!.removeLocationUpdates(locationCallback)
-        }
-    }
-
-    override fun onBackPressed() {
-        if(System.currentTimeMillis() - mBackWait >=2000 ) {
-            mBackWait = System.currentTimeMillis()
-            Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_LONG).show()
-        } else {
-            finishAffinity() //액티비티 종료
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.setImage(binding.profileImage)
-    }
-
     companion object {
         private val TAG = "googlemap_example"
         private val GPS_ENABLE_REQUEST_CODE = 2001
         private val UPDATE_INTERVAL_MS = 1000 // 1초
-        private val FASTEST_UPDAT = 1000
-        private val E_INTERVAL_MS = 10000 // 60초
+        private val FASTEST_UPDATE_INTERVAL_MS = 500000 // 0.5초
 
         // onRequestPermissionsResult에서 수신된 결과에서 ActivityCompat.requestPermissions를 사용한 퍼미션 요청을 구별하기 위해 사용됩니다.
         private val PERMISSIONS_REQUEST_CODE = 100
     }
-
-    private fun showPlaceInformation(location: LatLng) {
-        mMap!!.clear() //지도 클리어
-        //previous_marker?.clear() //지역정보 마커 클리어
-        NRPlaces.Builder()
-            .listener(this)
-            .key("AIzaSyBcgi7r8uJ46JLxHTbWND9c3Ew6wN8zk5A")
-            .latlng(location.latitude, location.longitude) //현재 위치
-            .radius(500) //500 미터 내에서 검색
-            .type(PlaceType.CAFE) //음식점
-            .build()
-            .execute()
-    }
-
-    override fun onPlacesFailure(e: PlacesException?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPlacesStart() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPlacesSuccess(places: List<Place> ) {
-        runOnUiThread {
-            for (place in places) {
-                val latLng = LatLng(
-                    place.latitude, place.longitude
-                )
-                val markerSnippet = getCurrentAddress(latLng)
-                val markerOptions = MarkerOptions()
-                markerOptions.position(latLng)
-                markerOptions.title(place.name)
-                markerOptions.snippet(markerSnippet)
-                val item = mMap!!.addMarker(markerOptions)
-                //previous_marker.add(item)
-            }
-
-            //중복 마커 제거
-            val hashSet = HashSet<Marker>()
-            hashSet.addAll(previous_marker!!)
-            //previous_marker.clear()
-            //previous_marker.addAll(hashSet)
-        }
-    }
-
-    override fun onPlacesFinished() {
-        TODO("Not yet implemented")
-    }
-
 }
