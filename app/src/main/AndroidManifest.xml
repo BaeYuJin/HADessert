@@ -53,6 +53,7 @@
         <activity android:name=".activity.Search1Activity" />
         <activity android:name=".activity.IntroDessertActivity" />
         <activity android:name=".activity.SetNowLocationActivity" />
+        <activity android:name=".activity.DessertPlaceActivity" />
 
         <activity android:name=".activity.SplashActivity" >
             <intent-filter>
