@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.had.dataclass.DataDessert
 import com.example.had.databinding.DessertListBinding
+import com.example.had.dataclass.StarData
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 
@@ -58,16 +60,22 @@ class RecyclerAdapterDessert(private val items: MutableList<DataDessert>) : Recy
 
             if (user != null) {
                 db.collection(user.uid).document("${binding.shopname.text}").get()
-                    .addOnSuccessListener { document ->
-                        if (document != null) {
-                            Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    .addOnSuccessListener { documentSnapshot ->
+                        var star = documentSnapshot.toObject<StarData>()
+                        //if (documentSnapshot != null) {
+                        if (star != null) {
+                            Log.d(TAG, "star data: ${star.name}")
                             binding.heart.setVisibility(View.VISIBLE)
-                        } else {
-                            Log.d(TAG, "No such document")
+                            binding.blankheart.setVisibility(View.INVISIBLE)
                         }
+
+                       // } else {
+                    // Log.d(TAG, "No such document")
+                      //  }
                     }
                     .addOnFailureListener { exception ->
                         Log.d(TAG, "get failed with ", exception)
+                        //binding.heart.setVisibility(View.INVISIBLE)
                     }
             }
             /*if (user != null) {
