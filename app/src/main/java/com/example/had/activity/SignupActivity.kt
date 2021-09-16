@@ -62,14 +62,19 @@ class SignupActivity : AppCompatActivity() {
         val reference = database.getReference("Users")
 
         binding.pwbtn.setOnClickListener {
-            if (binding.pw.text.toString() != binding.pwcheck.text.toString()) {
-                binding.textView14.setVisibility(View.VISIBLE)
-                binding.textView.setVisibility(View.INVISIBLE)
+            if (binding.pw.text.toString() != "" && binding.pwcheck.text.toString() != "") {
+                if (binding.pw.text.toString() != binding.pwcheck.text.toString()) {
+                    binding.textView14.setVisibility(View.VISIBLE)
+                    binding.textView.setVisibility(View.INVISIBLE)
+                    binding.textView12.setVisibility(View.INVISIBLE)
+                } else {
+                    binding.textView14.setVisibility(View.INVISIBLE)
+                    binding.textView.setVisibility(View.VISIBLE)
+                    binding.textView12.setVisibility(View.INVISIBLE)
+                }
             }
-            else {
-                binding.textView14.setVisibility(View.INVISIBLE)
-                binding.textView.setVisibility(View.VISIBLE)
-            }
+            else
+                binding.textView12.setVisibility(View.VISIBLE)
             /*if (binding.pw.text.equals(binding.pwcheck.text))
                 binding.textView14.setVisibility(View.INVISIBLE)
             else
