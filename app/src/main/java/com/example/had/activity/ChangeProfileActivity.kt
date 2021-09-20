@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
@@ -60,7 +61,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         val database = Firebase.database
         val reference = database.getReference("Users")
 
-        setImage(this, binding.NewProfileImage)
+        binding.NewProfileImage.setImageBitmap(PreferenceUtil.StringtoBitmap(this))
 
         user?.let {
             // Name, email address, and profile photo Url
@@ -124,7 +125,12 @@ class ChangeProfileActivity : AppCompatActivity() {
                 reference.child(user.uid).child("name").setValue(binding.NewNickname.text.toString())
             }
             uploadProfileImage()
-            finish()
+            Handler().postDelayed(Runnable {
+                //딜레이 후 시작할 코드 작성
+                finish()
+            }, 1000) // 0.6초 정도 딜레이를 준 후 시작
+
+
         }
 
     }
@@ -165,7 +171,7 @@ class ChangeProfileActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "User profile updated.")
-                    viewModel.setImageFile(this)
+                    PreferenceUtil.BitmaptoString(this, bitmap)
                 }
             }
 
@@ -174,6 +180,7 @@ class ChangeProfileActivity : AppCompatActivity() {
 
         }.addOnSuccessListener { taskSnapshot -> }
     }
+
 
 
 }
