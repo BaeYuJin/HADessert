@@ -7,6 +7,7 @@ import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.had.PreferenceUtil
 import com.example.had.PreferenceUtil.getRecentWords
+import com.example.had.PreferenceUtil.isRecentWordNull
 import com.example.had.adapter.RecyclerAdapterPopular
 import com.example.had.adapter.RecyclerAdapterRecent
 import com.example.had.databinding.ActivitySearch1Binding
@@ -33,7 +34,9 @@ class Search1Activity : AppCompatActivity() {
         binding2 = ActivitySearchBinding.inflate(layoutInflater)
         binding3 = RecentListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getlistRecent()
+
+        if(!isRecentWordNull(this, "WORD"))
+            list2 = getlistRecent()
 
         var intent = Intent(this, SearchActivity::class.java)
 
@@ -45,7 +48,6 @@ class Search1Activity : AppCompatActivity() {
 
                 if(list2.count() == 0){
                     list2.add(DataSearch(recentWord!!))
-                    listRecent(list2)
                     // Log.d("query:", query)
                     intent.putExtra("word", query)
                     startActivity(intent)
@@ -62,12 +64,11 @@ class Search1Activity : AppCompatActivity() {
                     Log.d("list2[i] :", list2.count().toString())
 
                     list2.add(DataSearch(recentWord!!))
-                    listRecent(list2)
                     // Log.d("query:", query)
                     intent.putExtra("word", query)
                     startActivity(intent)
                 }
-
+                listRecent(list2)
                 return true
             }
 
@@ -102,9 +103,8 @@ class Search1Activity : AppCompatActivity() {
         binding.RecentRv.adapter = adapter2
     }
 
-    fun getlistRecent(){
-        list2 = getRecentWords(this, "Word")
-        binding.RecentRv.adapter = adapter2
+    fun getlistRecent() : MutableList<DataSearch> {
+        return getRecentWords(this, "WORD")
     }
 }
 

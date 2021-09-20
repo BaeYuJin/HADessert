@@ -24,6 +24,8 @@ import androidx.activity.viewModels
 
 import androidx.annotation.NonNull
 import com.example.had.FireStorageViewModel
+import com.example.had.PreferenceUtil
+import com.example.had.PreferenceUtil.setImage
 import com.example.had.R
 
 import com.google.android.gms.tasks.OnFailureListener
@@ -54,10 +56,11 @@ class ChangeProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChangeProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.setImage(this, binding.NewProfileImage)
-        //getFirebaseImage()
+
         val database = Firebase.database
         val reference = database.getReference("Users")
+
+        setImage(this, binding.NewProfileImage)
 
         user?.let {
             // Name, email address, and profile photo Url
@@ -162,6 +165,7 @@ class ChangeProfileActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "User profile updated.")
+                    viewModel.setImageFile(this)
                 }
             }
 
@@ -169,8 +173,6 @@ class ChangeProfileActivity : AppCompatActivity() {
         uploadTask.addOnFailureListener {
 
         }.addOnSuccessListener { taskSnapshot -> }
-        viewModel.setImageFile(this)
-        viewModel.setImage(this, binding.NewProfileImage)
     }
 
 

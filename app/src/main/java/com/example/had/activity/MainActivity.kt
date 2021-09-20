@@ -29,6 +29,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.had.FireStorageViewModel
+import com.example.had.PreferenceUtil
+import com.example.had.PreferenceUtil.setImage
 import com.example.had.activity.SetNowLocationActivity.Companion.FASTEST_UPDATE_INTERVAL_MS
 import com.example.had.adapter.RecyclerAdapterStar
 import com.example.had.databinding.ActivityMainBinding
@@ -99,7 +101,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.setImage(this, binding.profileImage)
+        setImage(this, binding.profileImage)
 
         // 검색 창 클릭 시 액티비티 이동
         binding.mainSearchView.setOnClickListener {
@@ -570,8 +572,9 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
 
     override fun onResume() {
         super.onResume()
-        viewModel.setImage(this, binding.profileImage)
+        setImage(this, binding.profileImage)
     }
+
 
     companion object {
         private val TAG = "googlemap_example"

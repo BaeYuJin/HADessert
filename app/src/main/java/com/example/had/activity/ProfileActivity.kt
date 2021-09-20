@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.had.AppInfoActivity
 import com.example.had.FireStorageViewModel
 import com.example.had.PreferenceUtil
+import com.example.had.PreferenceUtil.setImage
 import com.example.had.databinding.ActivityProfileBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -65,17 +67,9 @@ class ProfileActivity : AppCompatActivity() {
             })
         }
 
-        val pathReference = storageRef.child("profileImages/${user?.uid}.jpg")
-        val gsReference = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
-
-        //displayImageRef(gsReference, binding.imageView12)
-
-        //Glide.with(this).load(gsReference).into(binding.profileImage)
-
-
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.setImage(this, binding.profileImage)
+        //viewModel.setImage(this, binding.profileImage) //onResume로 옮김
         binding.changeProfile.setOnClickListener{
             startActivity(Intent(this, ChangeProfileActivity::class.java))
         }
@@ -103,7 +97,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.setImage(this, binding.profileImage)
+        setImage(this, binding.profileImage)
     }
 
 }

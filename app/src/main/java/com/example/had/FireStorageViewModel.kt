@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.provider.MediaStore.Images.Media.getBitmap
+import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.lifecycle.MutableLiveData
@@ -31,13 +32,11 @@ class FireStorageViewModel : ViewModel() {
         imageRefUrl?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
             val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
             BitmaptoString(context, bmp)
+            Log.d("FireStorageViewModel", "set Imgae File")
         }?.addOnFailureListener {
             // Failed to download the image
         }
     }
 
-    fun setImage(context: Context, view:ImageView){
-        val bmp = PreferenceUtil.StringtoBitmap(context)
-        view?.setImageBitmap(bmp)
-    }
+
 }

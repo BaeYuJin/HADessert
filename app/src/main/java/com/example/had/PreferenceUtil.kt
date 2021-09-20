@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
 import android.util.Log
+import android.widget.ImageView
 import com.example.had.dataclass.DataSearch
 import org.json.JSONArray
 import org.json.JSONException
@@ -82,7 +83,13 @@ object PreferenceUtil {
           editor.putString(key, null)
         }
 
-        editor.commit()
+        editor.apply()
+    }
+
+    fun isRecentWordNull(context: Context, key : String) : Boolean {
+        val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+        val json = prefs.getString(key, null)
+        return json == null
     }
 
     fun getRecentWords(context: Context, key : String): MutableList<DataSearch> {
@@ -121,7 +128,9 @@ object PreferenceUtil {
         val byte = outputStream.toByteArray()
 
         editor.putString("profile", Base64.encodeToString(byte, Base64.DEFAULT))
-        editor.commit()
+
+        Log.d("PreferenceUtil", "profile Updated")
+        editor.apply()
     }
 
     fun StringtoBitmap(context: Context) : Bitmap {
@@ -130,11 +139,17 @@ object PreferenceUtil {
         if(str != null) {
             val byte = Base64.decode(str, Base64.DEFAULT)
             val bmp = BitmapFactory.decodeByteArray(byte, 0, byte.size)
+            Log.d("PreferenceUtil", "get Bitmap from PreferenceUtil")
             return bmp
         }
         else{
             val bmp = BitmapFactory.decodeResource(context.resources, R.drawable.profile_image);
             return bmp
         }
+    }
+
+    fun setImage(context: Context, view: ImageView){
+        Log.d("PreferenceUtil", "set Image from PreferenceUtil")
+        view.setImageBitmap(StringtoBitmap(context))
     }
 }
