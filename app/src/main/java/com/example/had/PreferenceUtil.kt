@@ -2,10 +2,16 @@ package com.example.had
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.util.Log
 import com.example.had.dataclass.DataSearch
 import org.json.JSONArray
 import org.json.JSONException
+import java.io.ByteArrayOutputStream
+import java.io.OutputStream
+import java.nio.charset.Charset
 
 /*class PreferenceUtil(context: Context) {
     private val prefs: SharedPreferences = context.getSharedPreferences("my_id", Context.MODE_PRIVATE)
@@ -66,8 +72,8 @@ object PreferenceUtil {
         val editor = prefs.edit()
         val jArray = JSONArray()
         for(i in 0 until values.size){
-            Log.d("values ", values[i].toString())
-            jArray.put(values[i])
+            Log.d("values ", values[i].word)
+            jArray.put(values[i].word)
         }
 
         if(values.isNotEmpty()){
@@ -87,9 +93,9 @@ object PreferenceUtil {
             try {
                 val a = JSONArray(json)
                 for (i in 0 until a.length()) {
-                    val str = a.optString(i) as DataSearch
+                    val str = a.optString(i)
                     if (str != null) {
-                        list.add(str)
+                        list.add(DataSearch(str))
                     }
                 }
             } catch (e: JSONException) {
@@ -105,5 +111,30 @@ object PreferenceUtil {
         val editor : SharedPreferences.Editor = prefs.edit()
         editor.clear()
         editor.commit()
+    }
+
+    fun BitmaptoString(context:Context, bmp : Bitmap){
+        val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        var outputStream= ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        val byte = outputStream.toByteArray()
+
+        editor.putString("profile", Base64.encodeToString(byte, Base64.DEFAULT))
+        editor.commit()
+    }
+
+    fun StringtoBitmap(context: Context) : Bitmap {
+        val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+        val str = prefs.getString("profile", null)
+        if(str != null) {
+            val byte = Base64.decode(str, Base64.DEFAULT)
+            val bmp = BitmapFactory.decodeByteArray(byte, 0, byte.size)
+            return bmp
+        }
+        else{
+            val bmp = BitmapFactory.decodeResource(context.resources, R.drawable.profile_image);
+            return bmp
+        }
     }
 }

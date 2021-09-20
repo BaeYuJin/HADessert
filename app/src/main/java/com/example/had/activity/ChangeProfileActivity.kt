@@ -54,7 +54,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChangeProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.setImage(binding.NewProfileImage)
+        viewModel.setImage(this, binding.NewProfileImage)
         //getFirebaseImage()
         val database = Firebase.database
         val reference = database.getReference("Users")
@@ -169,7 +169,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         uploadTask.addOnFailureListener {
 
         }.addOnSuccessListener { taskSnapshot -> }
-        viewModel.setImage(binding.NewProfileImage)
+        viewModel.setImageFile(this, binding.NewProfileImage)
     }
 
 
