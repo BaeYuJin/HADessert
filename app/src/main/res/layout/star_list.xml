@@ -9,6 +9,8 @@
         android:id="@+id/star_imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -17,33 +19,34 @@
         android:id="@+id/starscore2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
         android:layout_marginTop="7dp"
+        android:fontFamily="@font/im_hyemin_bold"
         android:text="별점"
         android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/distance2"
         app:layout_constraintTop_toBottomOf="@+id/distance2" />
 
     <TextView
         android:id="@+id/distance2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/im_hyemin_bold"
         android:text="나와의 거리"
         android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shopname2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/star_imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/shopname2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="7dp"
+        android:fontFamily="@font/im_hyemin_bold"
         android:text="가게이름"
         android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/distance2"
+        app:layout_constraintStart_toStartOf="@+id/distance2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

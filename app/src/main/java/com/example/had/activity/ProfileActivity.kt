@@ -75,13 +75,13 @@ class ProfileActivity : AppCompatActivity() {
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.setImage(binding.profileImage)
+        viewModel.setImage(this, binding.profileImage)
         binding.changeProfile.setOnClickListener{
             startActivity(Intent(this, ChangeProfileActivity::class.java))
         }
 
         binding.likedStore.setOnClickListener{
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(Intent(this, StarActivity::class.java))
         }
 
         binding.logout.setOnClickListener{
@@ -103,7 +103,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.setImage(binding.profileImage)
+        viewModel.setImage(this, binding.profileImage)
     }
 
 }

@@ -169,7 +169,8 @@ class ChangeProfileActivity : AppCompatActivity() {
         uploadTask.addOnFailureListener {
 
         }.addOnSuccessListener { taskSnapshot -> }
-        viewModel.setImageFile(this, binding.NewProfileImage)
+        viewModel.setImageFile(this)
+        viewModel.setImage(this, binding.NewProfileImage)
     }
 
 

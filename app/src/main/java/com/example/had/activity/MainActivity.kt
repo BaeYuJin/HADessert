@@ -32,6 +32,7 @@ import com.example.had.FireStorageViewModel
 import com.example.had.activity.SetNowLocationActivity.Companion.FASTEST_UPDATE_INTERVAL_MS
 import com.example.had.adapter.RecyclerAdapterStar
 import com.example.had.databinding.ActivityMainBinding
+
 import com.example.had.dataclass.StarData
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.setImage(binding.profileImage)
+        viewModel.setImage(this, binding.profileImage)
 
         // 검색 창 클릭 시 액티비티 이동
         binding.mainSearchView.setOnClickListener {
@@ -569,7 +570,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback,
 
     override fun onResume() {
         super.onResume()
-        viewModel.setImage(binding.profileImage)
+        viewModel.setImage(this, binding.profileImage)
     }
 
     companion object {

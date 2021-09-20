@@ -22,7 +22,7 @@ class FireStorageViewModel : ViewModel() {
     val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
     val imageRefUrl = storage.getReferenceFromUrl("gs://hadessert-c6192.appspot.com/profileImages/${user?.uid}.jpg")
 
-    fun setImageFile(context : Context, view: ImageView){
+    fun setImageFile(context : Context){
         val user = Firebase.auth.currentUser
         val storageRef = storage.reference
         val imageRefChild = storageRef.child("profileImages/${user?.uid}.jpg")
@@ -31,7 +31,6 @@ class FireStorageViewModel : ViewModel() {
         imageRefUrl?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
             val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
             BitmaptoString(context, bmp)
-            view?.setImageBitmap(bmp)
         }?.addOnFailureListener {
             // Failed to download the image
         }
