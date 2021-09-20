@@ -2,6 +2,7 @@ package com.example.had.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
@@ -66,7 +67,10 @@ class LoginActivity : AppCompatActivity() {
                                 Log.d(TAG, "signInWithEmail:success")
                                 val user = auth.currentUser
                                 viewModel.setImageFile(this)
-                                startActivity(Intent(this, MainActivity::class.java))
+                                Handler().postDelayed(Runnable {
+                                    //딜레이 후 시작할 코드 작성
+                                    startActivity(Intent(this, MainActivity::class.java))
+                                }, 1200)
                                 //binding.loginEmailEditText.setBackgroundColor(R.drawable.white_edittext)
                             } else {
                                 // If sign in fails, display a message to the user.
