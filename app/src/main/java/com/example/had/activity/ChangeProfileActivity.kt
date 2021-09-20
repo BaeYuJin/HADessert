@@ -128,7 +128,7 @@ class ChangeProfileActivity : AppCompatActivity() {
             Handler().postDelayed(Runnable {
                 //딜레이 후 시작할 코드 작성
                 finish()
-            }, 1000) // 0.6초 정도 딜레이를 준 후 시작
+            }, 1000)
 
 
         }
