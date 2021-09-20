@@ -20,10 +20,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecentRv"
-        android:layout_width="346dp"
-        android:layout_height="480dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="13dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:listitem="@layout/recent_list" />
