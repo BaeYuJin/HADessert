@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.had.PreferenceUtil
+import com.example.had.activity.Search1Activity
 import com.example.had.activity.SearchActivity
 import com.example.had.databinding.ActivitySearch1Binding
 import com.example.had.dataclass.DataSearch
 import com.example.had.databinding.RecentListBinding
+import java.security.AccessController.getContext
 
 
 class RecyclerAdapterRecent(private val items: MutableList<DataSearch>) : RecyclerView.Adapter<RecyclerAdapterRecent.ViewHolder>() {
@@ -38,6 +41,7 @@ class RecyclerAdapterRecent(private val items: MutableList<DataSearch>) : Recycl
 
     fun removeItem(position: Int){
         items.removeAt(position)
+        PreferenceUtil.setRecentWords(binding1.imageView6.context, "WORD", items)
         notifyDataSetChanged()
     }
 
