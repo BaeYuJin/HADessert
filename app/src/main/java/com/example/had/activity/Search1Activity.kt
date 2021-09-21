@@ -36,7 +36,7 @@ class Search1Activity : AppCompatActivity() {
         setContentView(binding.root)
 
         if(!isRecentWordNull(this, "WORD"))
-            list2 = getlistRecent()
+            getRecentWords(this, "WORD", list2)
 
         var intent = Intent(this, SearchActivity::class.java)
 
@@ -103,8 +103,6 @@ class Search1Activity : AppCompatActivity() {
         binding.RecentRv.adapter = adapter2
     }
 
-    fun getlistRecent() : MutableList<DataSearch> {
-        return getRecentWords(this, "WORD")
-    }
+
 }
 

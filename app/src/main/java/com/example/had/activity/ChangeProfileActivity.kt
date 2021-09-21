@@ -129,10 +129,7 @@ class ChangeProfileActivity : AppCompatActivity() {
                 //딜레이 후 시작할 코드 작성
                 finish()
             }, 1000)
-
-
         }
-
     }
 
     var launcher = registerForActivityResult(

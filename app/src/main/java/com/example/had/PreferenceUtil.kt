@@ -92,10 +92,9 @@ object PreferenceUtil {
         return json == null
     }
 
-    fun getRecentWords(context: Context, key : String): MutableList<DataSearch> {
+    fun getRecentWords(context: Context, key : String, list : MutableList<DataSearch>) {
         val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
         val json = prefs.getString(key, null)
-        val list = mutableListOf<DataSearch>()
         if (json != null) {
             try {
                 val a = JSONArray(json)
@@ -109,7 +108,7 @@ object PreferenceUtil {
                 e.printStackTrace()
             }
         }
-        return list
+
     }
 
 
